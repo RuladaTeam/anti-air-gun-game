@@ -1,0 +1,7 @@
+{
+	"name": "com.tvp.futurift-plugin",
+	"displayName": "FutuRIFT",
+	"version": "4.0.2",
+	"description": "The plugin allows you to interact with the program that controls the FutuRift chair in Unity.",
+	"dependencies": {}
+}

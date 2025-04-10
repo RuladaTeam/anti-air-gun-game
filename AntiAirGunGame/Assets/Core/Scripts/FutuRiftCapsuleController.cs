@@ -9,7 +9,7 @@ namespace Core.Scripts
     {
         [Header("Connection Parameters")]
         [SerializeField] private string _ipAddress = "127.0.0.1";
-        [SerializeField] private int _port = 60655;
+        [SerializeField] private int _port = 6065;
         [Space(3f)]
         [Header("Initial Settings")]
         [SerializeField] private float _initialPitch = 0f;

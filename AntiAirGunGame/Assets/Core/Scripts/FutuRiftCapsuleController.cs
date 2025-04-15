@@ -11,8 +11,8 @@ namespace Core.Scripts
         [SerializeField] private int _port = 6065;
         [Space(3f)]
         [Header("Initial Settings")]
-        [SerializeField] private float _initialPitch = 0f;
-        [SerializeField] private float _initialRoll = 0f;
+        [SerializeField] private float _initialPitch;
+        [SerializeField] private float _initialRoll;
 
         public static FutuRiftCapsuleController Instance { get; private set; }
         
@@ -33,48 +33,17 @@ namespace Core.Scripts
 
         private void Start()
         {
-            _controller.Start();
-            _controller.Pitch = _initialPitch;
-            _controller.Roll = _initialRoll;
-            
-        }
-
-        private void Update()
-        {
-            // if (Input.GetKeyDown(KeyCode.UpArrow))
-            // {
-            //     _controller.Pitch += 1;
-            // }
-            //
-            // if (Input.GetKeyDown(KeyCode.DownArrow))
-            // {
-            //     _controller.Pitch--;
-            // }
-            //
-            // if (Input.GetKey(KeyCode.LeftArrow))
-            // {
-            //     _controller.Roll--;
-            //     _controller.Pitch--;
-            // }
-            //
-            // if (Input.GetKey(KeyCode.RightArrow))
-            // {
-            //     _controller.Roll++;
-            //     _controller.Pitch--;
-            // }
-            // else
-            // {
-            //     _controller.Pitch = _initialPitch;
-            //     _controller.Roll = _initialRoll;
-            // }
+            _controller?.Start();
+            if (_controller != null)
+            {
+                _controller.Pitch = _initialPitch;
+                _controller.Roll = _initialRoll;
+            }
         }
 
         private void OnDisable()
         {
-            if (_controller != null)
-            {
-                _controller.Stop();
-            }
+            _controller?.Stop();
         }
 
         public void SetPitch(float pitch)
@@ -87,10 +56,25 @@ namespace Core.Scripts
             _controller.Roll = roll;
         }
 
-        public void SetPitchAndRoll(float pitch, float roll)
+        public void SetPitchAndRoll(float pitch, float roll, bool allowMax = false)
         {
-            _controller.Pitch = pitch;
-            _controller.Roll = roll;
+            if (allowMax)
+            {
+                _controller.Pitch = pitch;
+                _controller.Roll = roll;
+                return;
+            }
+            
+            if (pitch is > -13 and < 19)
+            {
+                _controller.Pitch = pitch;
+            }
+            if (roll is > -16 and < 16)
+            {
+                _controller.Roll = roll;
+            }
         }
     }
 }
+
+// 89572,32

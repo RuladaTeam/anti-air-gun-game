@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Core.Scripts
@@ -17,7 +16,7 @@ namespace Core.Scripts
         [SerializeField] private int _rotationRatio = 20;
         [SerializeField] private float _pitchRatio = 20;
         [SerializeField] private float _rotationRollCoefficient = .33f;
-        [SerializeField] private float _rotationPitchCoefficient = 0;
+        [SerializeField] private float _rotationPitchCoefficient;
         [SerializeField] private float _pitchCoefficient = 0.02f;
         
         private Vector3 _previousEulerAngles;
@@ -65,18 +64,18 @@ namespace Core.Scripts
 
             _totalRotation += deltaRotation;
             _previousEulerAngles = currentEulerAngles;
-    
+
+            float pitchDirectionCoefficient = deltaRotation.y >= 0 ? -1 : 1;
             _rotatableTransform.eulerAngles = new Vector3(
-                _rotatableTransform.eulerAngles.x, _totalRotation.y/_rotationRatio, _rotatableTransform.eulerAngles.z);
+                _rotatableTransform.eulerAngles.x, _totalRotation.y/_rotationRatio,
+                _rotatableTransform.eulerAngles.z);
 
             _currentRotationWheelValue += -deltaRotation.y * _rotationRollCoefficient;
-            _currentPitchWheelValue += -deltaRotation.y * _rotationPitchCoefficient;
+            _currentPitchWheelValue += -deltaRotation.y * _rotationPitchCoefficient * pitchDirectionCoefficient;
         }
 
         private void HandlePitch()
         {
-            if (_totalPitch.z/_pitchRatio >= 80) return;
-            
             Vector3 currentPitch = _pitchWheelTransform.localEulerAngles;
 
             Vector3 deltaPitch = new Vector3(
@@ -85,12 +84,21 @@ namespace Core.Scripts
                 DeltaAngle(_previousPitch.z, currentPitch.z)
             );
 
+            if (_totalPitch.z / _pitchRatio <= -32 && deltaPitch.z < 0)
+            {
+                deltaPitch = new Vector3(0, 0, 0);
+            }
+            if (_totalPitch.z/_pitchRatio >= 29 && deltaPitch.z > 0)
+            {
+                deltaPitch = new Vector3(0, 0, 0);
+            }
+
             _totalPitch += deltaPitch;
             _previousPitch = currentPitch;
 
             foreach (var pitchable in _pitchableTransforms)
             {
-                pitchable.eulerAngles = new Vector3(
+                pitchable.localEulerAngles = new Vector3(
                     pitchable.localEulerAngles.x, pitchable.localEulerAngles.y, _totalPitch.z/_pitchRatio);
             }
             

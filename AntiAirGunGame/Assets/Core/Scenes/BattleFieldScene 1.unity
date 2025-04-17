@@ -5688,7 +5688,10 @@ MonoBehaviour:
   _endTransform: {fileID: 1333985530}
   _height: 2
   _segments: 20
+  _duration: 0
   _gunTransform: {fileID: 1181992684}
+  _bullet: {fileID: 0}
+  _ofsetTime: 0
 --- !u!65 &513645977
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using FutuRIFT;
 
@@ -41,19 +42,59 @@ namespace Core.Scripts
             }
         }
 
+        private void Update()
+        {
+            if (OVRInput.GetDown(OVRInput.RawButton.A))
+            {
+                Debug.Log("Pizda prikol");
+                KickBack();
+            }
+        }
+        
+        public void KickBack()
+        {
+            int pitch = 5;
+            _controller.Pitch += pitch;
+            //StartCoroutine(KickBackPitch(5));
+        }
+
+        private IEnumerator KickBackPitch(int pitch)
+        {
+            if (pitch < 0) yield break;
+            
+            Debug.Log("pizda pitch " + _controller.Pitch);
+        }
+        
         private void OnDisable()
         {
             _controller?.Stop();
         }
 
-        public void SetPitch(float pitch)
+        public void SetPitch(float pitch, bool allowMax = false)
         {
-            _controller.Pitch = pitch;
+            if (allowMax)
+            {
+                _controller.Pitch = pitch;
+            }
+
+            if (pitch is > -13 and < 19)
+            {
+                _controller.Pitch = pitch;
+            }
         }
 
-        public void SetRoll(float roll)
+        public void SetRoll(float roll, bool allowMax = false)
         {
-            _controller.Roll = roll;
+            if (allowMax)
+            {
+                _controller.Roll = roll;
+                return;
+            }
+
+            if (roll is > -16 and < 16)
+            {
+                _controller.Roll = roll;
+            }
         }
 
         public void SetPitchAndRoll(float pitch, float roll, bool allowMax = false)

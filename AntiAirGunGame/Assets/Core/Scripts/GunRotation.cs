@@ -86,12 +86,12 @@ namespace Core.Scripts
 
             if (_totalPitch.z / _pitchRatio <= -32 && deltaPitch.z < 0)
             {
-                _pitchWheelTransform.localEulerAngles += deltaPitch;
+                //_pitchWheelTransform.localEulerAngles -= deltaPitch;
                 deltaPitch = new Vector3(0, 0, 0);
             }
             if (_totalPitch.z/_pitchRatio >= 29 && deltaPitch.z > 0)
             {
-                _pitchWheelTransform.localEulerAngles -= deltaPitch;
+                //_pitchWheelTransform.localEulerAngles -= deltaPitch;
                 deltaPitch = new Vector3(0, 0, 0);
             }
 

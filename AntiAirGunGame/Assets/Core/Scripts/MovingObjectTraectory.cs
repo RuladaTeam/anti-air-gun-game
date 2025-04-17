@@ -12,13 +12,28 @@ public class MovingObjectTraectory : MonoBehaviour
     [SerializeField] private float _height = 2f;
     [Space(10)]
     [SerializeField] protected int _segments = 20;
-    [Space(30)]
     [SerializeField, Min(0.1f)] private float _duration;
+    [Space(30)]
+    [Header("Child Settings")]
     private Vector3[] _segmetPoints;
 
     protected void MovingObj(Transform objTransform, PathType pathType = PathType.Linear)
     {
-        objTransform.DOPath(_segmetPoints, _duration, pathType).OnComplete(() =>
+        Vector3 previousPosition = objTransform.position;
+        objTransform.DOPath(_segmetPoints, _duration, pathType, PathMode.Full3D, 10, Color.red).OnUpdate(() =>
+        {
+            Vector3 movementDirection = (objTransform.position - previousPosition).normalized;
+
+            if (movementDirection != Vector3.zero)
+            {
+
+                objTransform.rotation = Quaternion.LookRotation(movementDirection);
+            }
+
+            // Обновляем предыдущую позицию
+            previousPosition = objTransform.position;
+        }
+        ).OnComplete(() =>
         {
             Destroy(objTransform.gameObject);
         });

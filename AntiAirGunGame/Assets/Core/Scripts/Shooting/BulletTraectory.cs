@@ -47,9 +47,8 @@ public class BulletTraectory : MovingObjectTraectory
     {
         if (!_isShooting)
         {
-            Debug.Log("1");
             GameObject currentBullet = Instantiate(_bullet, _startTransform.position, _gunTransform.rotation);
-            MovingObj(currentBullet.transform);
+            MovingObjOnParabola(currentBullet.transform);
             _isShooting = true;
             _currentOfsetTime = _ofsetTime;
         }

@@ -17,7 +17,7 @@ public class MovingObjectTraectory : MonoBehaviour
     [Header("Child Settings")]
     private Vector3[] _segmetPoints;
 
-    protected void MovingObj(Transform objTransform, PathType pathType = PathType.Linear)
+    protected void MovingObjOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
     {
         Vector3 previousPosition = objTransform.position;
         objTransform.DOPath(_segmetPoints, _duration, pathType, PathMode.Full3D, 10, Color.red).OnUpdate(() =>

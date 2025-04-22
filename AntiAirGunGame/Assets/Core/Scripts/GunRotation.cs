@@ -11,13 +11,17 @@ namespace Core.Scripts
         [Header("Pitch")]
         [SerializeField] private Transform _pitchWheelTransform;
         [SerializeField] private Transform[] _pitchableTransforms;
-        
+        [SerializeField] private float _pitchOnKickBack;
+        [SerializeField] private float _kickbackDelay;
+            
         [Header("Coefficients")]
         [SerializeField] private int _rotationRatio = 20;
         [SerializeField] private float _pitchRatio = 20;
         [SerializeField] private float _rotationRollCoefficient = .33f;
         [SerializeField] private float _rotationPitchCoefficient;
         [SerializeField] private float _pitchCoefficient = 0.02f;
+        [Space(30)]
+        [SerializeField] private BulletTraectory _bulletTrajectory;
         
         private Vector3 _previousEulerAngles;
         private Vector3 _totalRotation;
@@ -30,6 +34,9 @@ namespace Core.Scripts
         
         private float _totalCapsulePitchValue;
         private float _totalCapsuleRollValue;
+        private float _kickbackValue;
+        private float _kickbackTimer;
+		private float _pitchWithoutKickback;
         
         private void Start()
         {
@@ -47,9 +54,31 @@ namespace Core.Scripts
             
             HandlePitch();
             HandleRotation();
+
+            bool allowMax = false;
             
+            if (_kickbackTimer > 0f)
+            {
+                allowMax = true;
+                _kickbackTimer -= Time.deltaTime;
+                _currentPitchWheelValue = 0f;
+                _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;     
+            }
+            else
+            {
+                _kickbackValue = 0;
+            }
+            
+            if (OVRInput.GetDown(OVRInput.RawButton.A) && _kickbackTimer <= 0f)
+            {
+                _bulletTrajectory.Shoot();
+                _kickbackTimer = _kickbackDelay;
+                _kickbackValue = _pitchOnKickBack;
+				_pitchWithoutKickback = FutuRiftCapsuleController.Instance.GetPitch();
+            }
+
             FutuRiftCapsuleController.Instance?.SetPitchAndRoll(
-                -_currentPitchWheelValue, _currentRotationWheelValue);
+                -_currentPitchWheelValue + _kickbackValue, _currentRotationWheelValue, allowMax);
         }
 
         private void HandleRotation()

@@ -26,7 +26,6 @@ public class BulletTraectory : MovingObjectTraectory
     private void Update()
     {
 
-        Shoot();
 
         if (_currentOfsetTime > 0)
         {
@@ -43,7 +42,7 @@ public class BulletTraectory : MovingObjectTraectory
         return ((endPoint.x - startPoint.x) / (gunPoint.x - startPoint.x)) * (gunPoint.y - startPoint.y) + startPoint.y;
     }
 
-    private void Shoot()
+    public void Shoot()
     {
         if (!_isShooting)
         {

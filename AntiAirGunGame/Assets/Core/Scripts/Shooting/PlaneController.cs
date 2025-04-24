@@ -1,15 +1,17 @@
 using UnityEngine;
 
-
 public class PlaneController : MonoBehaviour
 {
-    [SerializeField] private int _health = 3;
-    [SerializeField, Range(1, 100)] float _chanceToDiveOnLowHP;
+    [Header("Plane settings")]
+    [SerializeField, Min(1)] private int _health;
+    [Space(30), Header("Particles settings")]
     [SerializeField] private ParticleSystem _littleSmoke;
     [SerializeField] private ParticleSystem _smoke;
     [SerializeField] private ParticleSystem _detonation;
+
     private ParticleSystem _currentParticleSystem = null;
 
+    public bool IsHealthBelowHalf { get; private set; } = false;
     private int Health
     {
         get
@@ -20,19 +22,16 @@ public class PlaneController : MonoBehaviour
         {
             if ((float)value > (float)_health / 2)
             {
-                ChangeParticleSystem(_littleSmoke); ;
+                //ChangeParticleSystem(_littleSmoke);
             }
             else if (value <= 0)
             {
-                ChangeParticleSystem(_detonation);
+                //ChangeParticleSystem(_detonation);
             }
             else
             {
-                ChangeParticleSystem(_smoke);
-                if (Random.Range(1, 100) < _chanceToDiveOnLowHP)
-                {
-                    //diveToRandomAngle
-                }
+                //ChangeParticleSystem(_smoke);
+                IsHealthBelowHalf = true;
             }
             _health = value;
         }
@@ -42,12 +41,14 @@ public class PlaneController : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            _health--;
+            Health--;
+            //shaking
         }
         else if (other.gameObject.GetComponent<PlaneController>())
         {
-            _health = 0;
+            Health = 0;
         }
+        Debug.Log(Health);
     }
 
     private void ChangeParticleSystem(ParticleSystem nextParticleSystem)
@@ -59,7 +60,7 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    private void DropBombs()
+    public void DropBombs()
     {
         //afterEndOfTrail
     }

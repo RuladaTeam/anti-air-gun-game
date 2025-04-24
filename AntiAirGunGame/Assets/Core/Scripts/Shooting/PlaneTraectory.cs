@@ -21,7 +21,7 @@ public class PlaneTraectory : MovingObjectTraectory
     private void Start()
     {
         Vector3 lineDirection = (startParabolaTransform.position - _spawnTransform.position).normalized;
-        if(lineDirection != Vector3.zero)
+        if (lineDirection != Vector3.zero)
         {
             _currentPlane = Instantiate(movingObject, _spawnTransform.transform.position, Quaternion.LookRotation(lineDirection), transform);
         }

@@ -460,14 +460,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _height: 37.15
-  movingObject: {fileID: 4593774476126288258, guid: e9c6f454ef005ee419421fe1f8b49b04, type: 3}
+  movingObject: {fileID: 4518945616665175383, guid: e9c6f454ef005ee419421fe1f8b49b04, type: 3}
   startParabolaTransform: {fileID: 357185214}
   endParabolaTransform: {fileID: 1832086463}
   _duration: 3
   segments: 20
   _gunTransform: {fileID: 1012988065}
   _ofsetTime: 1
-  _bulletLife: 0
+  _lifeTime: 0.3
 --- !u!1 &1674072836
 GameObject:
   m_ObjectHideFlags: 0

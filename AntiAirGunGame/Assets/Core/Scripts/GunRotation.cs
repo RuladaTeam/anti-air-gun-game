@@ -20,7 +20,12 @@ namespace Core.Scripts
         [SerializeField] private float _rotationRollCoefficient = .33f;
         [SerializeField] private float _rotationPitchCoefficient;
         [SerializeField] private float _pitchCoefficient = 0.02f;
-        [Space(30)]
+        
+        [Header("BarrelKickback")]
+        [SerializeField] private Transform _barrelTransform;
+        [SerializeField] private float _barrelKickbackStrength;
+        
+        [Space(30)] 
         [SerializeField] private BulletTraectory _bulletTrajectory;
         
         private Vector3 _previousEulerAngles;
@@ -37,9 +42,13 @@ namespace Core.Scripts
         private float _kickbackValue;
         private float _kickbackTimer;
 		private float _pitchWithoutKickback;
+        private float _initGunRotation;
+
+        private Vector3 _barrelDefaultPosition;
         
         private void Start()
         {
+            _initGunRotation = _rotatableTransform.rotation.eulerAngles.y;
             _previousEulerAngles = _rotationWheelTransform.localEulerAngles;
             _totalRotation = _previousEulerAngles;
             
@@ -55,7 +64,11 @@ namespace Core.Scripts
             HandlePitch();
             HandleRotation();
             HandleKickback(out bool allowMax);
-            
+
+            if (OVRInput.GetDown(OVRInput.Button.One))
+            {
+                Kickback();
+            }
 
             FutuRiftCapsuleController.Instance?.SetPitchAndRoll(
                 -_currentPitchWheelValue + _kickbackValue, _currentRotationWheelValue, allowMax);
@@ -76,7 +89,7 @@ namespace Core.Scripts
 
             float pitchDirectionCoefficient = deltaRotation.y >= 0 ? -1 : 1;
             _rotatableTransform.eulerAngles = new Vector3(
-                _rotatableTransform.eulerAngles.x, _totalRotation.y/_rotationRatio,
+                _rotatableTransform.eulerAngles.x, (_totalRotation.y + _initGunRotation)/_rotationRatio,
                 _rotatableTransform.eulerAngles.z);
 
             _currentRotationWheelValue += -deltaRotation.y * _rotationRollCoefficient;
@@ -117,18 +130,33 @@ namespace Core.Scripts
         private void HandleKickback(out bool allowMax)
         {
             allowMax = false;
+            float barrelTimeToKickback = _kickbackDelay * 0.3f;
+            Vector3 barrelFinalPosition = new Vector3(_barrelDefaultPosition.x - _barrelKickbackStrength,
+                _barrelDefaultPosition.y, _barrelDefaultPosition.z);
             if (_kickbackTimer > 0f)
             {
+                if (_kickbackDelay - _kickbackTimer <= barrelTimeToKickback)
+                {
+                    _barrelTransform.localPosition = Vector3.Lerp(
+                        _barrelDefaultPosition, barrelFinalPosition, (_kickbackDelay - _kickbackTimer)/barrelTimeToKickback);
+                }
+                else
+                {
+                    _barrelTransform.localPosition = Vector3.Lerp(
+                        barrelFinalPosition, _barrelDefaultPosition, (_kickbackDelay - barrelTimeToKickback - _kickbackTimer)/(_kickbackDelay-barrelTimeToKickback));
+                    _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * 
+                        (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;  
+                }
                 allowMax = true;
                 _kickbackTimer -= Time.deltaTime;
-                _currentPitchWheelValue = 0f;
-                _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;     
+                _currentPitchWheelValue = 0f;   
             }
             else
             {
                 _kickbackValue = 0;
             }
         }
+        
 
         public void Kickback()
         {

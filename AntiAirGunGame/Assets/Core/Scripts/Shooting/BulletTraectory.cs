@@ -4,9 +4,10 @@ using DG.Tweening;
 
 public class BulletTraectory : MovingObjectTraectory
 {
+    [Space(30), Header("Shooting Settings")]
     [SerializeField] private Transform _gunTransform;
-    [SerializeField] private GameObject _bullet;
     [SerializeField, Min(0.1f)] private float _ofsetTime;
+    [SerializeField] private float _bulletLife; 
     private bool _isShooting;
     private float _currentOfsetTime;
 
@@ -14,8 +15,7 @@ public class BulletTraectory : MovingObjectTraectory
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.white;
-        Gizmos.DrawLine(_startTransform.position, new Vector3(_endTransform.position.x, CalculateLineYPos(_startTransform.position, _gunTransform.position, _endTransform.position), _endTransform.position.z));
-
+        Gizmos.DrawLine(startParabolaTransform.position, new Vector3(endParabolaTransform.position.x, CalculateLineYPos(startParabolaTransform.position, _gunTransform.position, endParabolaTransform.position), endParabolaTransform.position.z));
     }
     private void Start()
     {
@@ -25,7 +25,6 @@ public class BulletTraectory : MovingObjectTraectory
 
     private void Update()
     {
-
         Shoot();
 
         if (_currentOfsetTime > 0)
@@ -47,12 +46,11 @@ public class BulletTraectory : MovingObjectTraectory
     {
         if (!_isShooting)
         {
-            GameObject currentBullet = Instantiate(_bullet, _startTransform.position, _gunTransform.rotation);
-            MovingObjOnParabola(currentBullet.transform);
+            GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation);
+            MovingObjectOnParabola(currentBullet.transform);
+            Destroy(currentBullet, _bulletLife);
             _isShooting = true;
             _currentOfsetTime = _ofsetTime;
         }
     }
-
-
 }

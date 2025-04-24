@@ -4,21 +4,23 @@ using DG;
 using DG.Tweening;
 
 
-public class MovingObjectTraectory : MonoBehaviour
+public abstract class MovingObjectTraectory : MonoBehaviour
 {
     [Header("Trajectory Settings")]
-    [SerializeField] protected Transform _startTransform;
-    [SerializeField] protected Transform _endTransform;
     [SerializeField] private float _height = 2f;
+    [SerializeField] protected GameObject movingObject;
+    [SerializeField] protected Transform startParabolaTransform;
+    [SerializeField] protected Transform endParabolaTransform;
     [Space(10)]
-    [SerializeField] protected int _segments = 20;
     [SerializeField, Min(0.1f)] private float _duration;
-    [Space(30)]
-    [Header("Child Settings")]
+    [SerializeField] protected int segments= 20;
     private Vector3[] _segmetPoints;
 
-    protected void MovingObjOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
+    public GameObject CurrentMovingObject { get; private set; }
+
+    protected void MovingObjectOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
     {
+        DOTween.KillAll();
         Vector3 previousPosition = objTransform.position;
         objTransform.DOPath(_segmetPoints, _duration, pathType, PathMode.Full3D, 10, Color.red).OnUpdate(() =>
         {
@@ -26,11 +28,9 @@ public class MovingObjectTraectory : MonoBehaviour
 
             if (movementDirection != Vector3.zero)
             {
-
                 objTransform.rotation = Quaternion.LookRotation(movementDirection);
             }
 
-            // Обновляем предыдущую позицию
             previousPosition = objTransform.position;
         }
         ).OnComplete(() =>
@@ -42,17 +42,17 @@ public class MovingObjectTraectory : MonoBehaviour
     protected void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(_startTransform.position, 0.1f);
-        Gizmos.DrawSphere(_endTransform.position, 0.5f);
+        Gizmos.DrawSphere(startParabolaTransform.position, 0.1f);
+        Gizmos.DrawSphere(endParabolaTransform.position, 0.5f);
 
-        Vector3 topPoint = CalculateParabolaPoint(0.5f, _startTransform.position, _endTransform.position, _height);
+        Vector3 topPoint = CalculateParabolaPoint(0.5f, startParabolaTransform.position, endParabolaTransform.position, _height);
         Gizmos.DrawSphere(topPoint, 0.5f);
-        Vector3 previousPoint = _startTransform.position;
-        _segmetPoints = new Vector3[_segments];
-        for (int i = 1; i <= _segments; i++)
+        Vector3 previousPoint = startParabolaTransform.position;
+        _segmetPoints = new Vector3[segments];
+        for (int i = 1; i <= segments; i++)
         {
-            float t = i / (float)_segments;
-            Vector3 currentPoint = CalculateParabolaPoint(t, _startTransform.position, _endTransform.position, _height);
+            float t = i / (float)segments;
+            Vector3 currentPoint = CalculateParabolaPoint(t, startParabolaTransform.position, endParabolaTransform.position, _height);
             _segmetPoints[i-1] = currentPoint;
             Gizmos.DrawLine(previousPoint, currentPoint);
             previousPoint = currentPoint;
@@ -62,8 +62,6 @@ public class MovingObjectTraectory : MonoBehaviour
     private Vector3 CalculateParabolaPoint(float t, Vector3 start, Vector3 end, float height)
     {
         float parabolaHeight = Mathf.Sin(t * Mathf.PI) * height;
-        return Vector3.Lerp(start, end, t) + Vector3.up * parabolaHeight;
+        return Vector3.Lerp(start, end, t) + transform.up * parabolaHeight;
     }
-
-
 }

@@ -1,12 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using Core.Scripts;
 
 
 public class BulletTraectory : MovingObjectTraectory
 {
     [SerializeField] private Transform _gunTransform;
     [SerializeField, Min(0.1f)] private float _ofsetTime;
+
+    [SerializeField] private GunRotation _gunrotation;
     [SerializeField] private float _lifeTime;
     private bool _isShooting;
     private float _currentOfsetTime;
@@ -26,7 +29,6 @@ public class BulletTraectory : MovingObjectTraectory
 
     private void Update()
     {
-        Shoot();
 
         if (_currentOfsetTime > 0)
         {
@@ -35,6 +37,11 @@ public class BulletTraectory : MovingObjectTraectory
         else
         {
             _isShooting = false;
+        }
+        
+        if (OVRInput.Get(OVRInput.Button.One))
+        {
+            Shoot();
         }
     }
 
@@ -52,6 +59,7 @@ public class BulletTraectory : MovingObjectTraectory
             StartCoroutine(DestroingBullet(currentBullet));
             _isShooting = true;
             _currentOfsetTime = _ofsetTime;
+            _gunrotation.Kickback();
         }
     }
 

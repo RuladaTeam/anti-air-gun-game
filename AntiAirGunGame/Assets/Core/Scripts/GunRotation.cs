@@ -65,11 +65,6 @@ namespace Core.Scripts
             HandleRotation();
             HandleKickback(out bool allowMax);
 
-            if (OVRInput.GetDown(OVRInput.Button.One))
-            {
-                Kickback();
-            }
-
             FutuRiftCapsuleController.Instance?.SetPitchAndRoll(
                 -_currentPitchWheelValue + _kickbackValue, _currentRotationWheelValue, allowMax);
         }
@@ -139,6 +134,11 @@ namespace Core.Scripts
                 {
                     _barrelTransform.localPosition = Vector3.Lerp(
                         _barrelDefaultPosition, barrelFinalPosition, (_kickbackDelay - _kickbackTimer)/barrelTimeToKickback);
+                    if (_kickbackDelay - _kickbackTimer >= barrelTimeToKickback - 0.15 * _kickbackDelay) 
+                    {
+                        _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * 
+                            (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay; 
+                    }
                 }
                 else
                 {

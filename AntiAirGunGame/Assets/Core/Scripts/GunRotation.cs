@@ -54,28 +54,8 @@ namespace Core.Scripts
             
             HandlePitch();
             HandleRotation();
-
-            bool allowMax = false;
+            HandleKickback(out bool allowMax);
             
-            if (_kickbackTimer > 0f)
-            {
-                allowMax = true;
-                _kickbackTimer -= Time.deltaTime;
-                _currentPitchWheelValue = 0f;
-                _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;     
-            }
-            else
-            {
-                _kickbackValue = 0;
-            }
-            
-            if (OVRInput.GetDown(OVRInput.RawButton.A) && _kickbackTimer <= 0f)
-            {
-                _bulletTrajectory.Shoot();
-                _kickbackTimer = _kickbackDelay;
-                _kickbackValue = _pitchOnKickBack;
-				_pitchWithoutKickback = FutuRiftCapsuleController.Instance.GetPitch();
-            }
 
             FutuRiftCapsuleController.Instance?.SetPitchAndRoll(
                 -_currentPitchWheelValue + _kickbackValue, _currentRotationWheelValue, allowMax);
@@ -115,12 +95,10 @@ namespace Core.Scripts
 
             if (_totalPitch.z / _pitchRatio <= -32 && deltaPitch.z < 0)
             {
-                //_pitchWheelTransform.localEulerAngles -= deltaPitch;
                 deltaPitch = new Vector3(0, 0, 0);
             }
             if (_totalPitch.z/_pitchRatio >= 29 && deltaPitch.z > 0)
             {
-                //_pitchWheelTransform.localEulerAngles -= deltaPitch;
                 deltaPitch = new Vector3(0, 0, 0);
             }
 
@@ -134,6 +112,29 @@ namespace Core.Scripts
             }
             
             _currentPitchWheelValue += _totalPitch.z * _pitchCoefficient / 10;
+        }
+
+        private void HandleKickback(out bool allowMax)
+        {
+            allowMax = false;
+            if (_kickbackTimer > 0f)
+            {
+                allowMax = true;
+                _kickbackTimer -= Time.deltaTime;
+                _currentPitchWheelValue = 0f;
+                _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;     
+            }
+            else
+            {
+                _kickbackValue = 0;
+            }
+        }
+
+        public void Kickback()
+        {
+            _kickbackTimer = _kickbackDelay;
+            _kickbackValue = _pitchOnKickBack;
+            _pitchWithoutKickback = FutuRiftCapsuleController.Instance.GetPitch();
         }
 
         private float DeltaAngle(float previousAngle, float currentAngle)

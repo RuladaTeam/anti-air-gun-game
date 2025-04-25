@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG;
 using DG.Tweening;
+using System.Collections;
 
 
 public abstract class MovingObjectTraectory : MonoBehaviour
@@ -12,7 +13,7 @@ public abstract class MovingObjectTraectory : MonoBehaviour
     [SerializeField] protected Transform startParabolaTransform;
     [SerializeField] protected Transform endParabolaTransform;
     [Space(10)]
-    [SerializeField, Min(0.1f)] private float _duration;
+    [SerializeField, Min(0.1f)] private float _parabolaDuration;
     [SerializeField] protected int segments= 20;
     private Vector3[] _segmetPoints;
 
@@ -20,9 +21,9 @@ public abstract class MovingObjectTraectory : MonoBehaviour
 
     protected void MovingObjectOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
     {
-        DOTween.KillAll();
+        objTransform.DOKill();
         Vector3 previousPosition = objTransform.position;
-        objTransform.DOPath(_segmetPoints, _duration, pathType, PathMode.Full3D, 10, Color.red).OnUpdate(() =>
+        objTransform.DOPath(_segmetPoints, _parabolaDuration, pathType, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
         {
             Vector3 movementDirection = (objTransform.position - previousPosition).normalized;
 
@@ -36,7 +37,9 @@ public abstract class MovingObjectTraectory : MonoBehaviour
         ).OnComplete(() =>
         {
             Destroy(objTransform.gameObject);
+
         });
+
     }
 
     protected void OnDrawGizmos()

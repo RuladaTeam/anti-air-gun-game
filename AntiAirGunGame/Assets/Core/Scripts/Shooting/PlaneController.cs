@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class PlaneController : MonoBehaviour
@@ -27,6 +28,7 @@ public class PlaneController : MonoBehaviour
             else if (value <= 0)
             {
                 //ChangeParticleSystem(_detonation);
+                Destroy(gameObject);
             }
             else
             {
@@ -41,6 +43,7 @@ public class PlaneController : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
+            Debug.Log("damage " + Health);
             Health--;
             //shaking
         }
@@ -48,7 +51,6 @@ public class PlaneController : MonoBehaviour
         {
             Health = 0;
         }
-        Debug.Log(Health);
     }
 
     private void ChangeParticleSystem(ParticleSystem nextParticleSystem)
@@ -57,11 +59,21 @@ public class PlaneController : MonoBehaviour
         {
             _currentParticleSystem = nextParticleSystem;
             _currentParticleSystem.Play();
+            //if detonation spawn pieces
         }
     }
 
     public void DropBombs()
     {
         //afterEndOfTrail
+    }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+        if(Health > 0)
+        {
+            Health = 0;
+        }
     }
 }

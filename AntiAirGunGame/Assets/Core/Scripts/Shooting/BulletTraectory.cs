@@ -67,7 +67,8 @@ public class BulletTraectory : MovingObjectTraectory
     private IEnumerator DestroingBullet(GameObject currentBullet)
     {
         yield return new WaitForSeconds(_lifeTime);
-        currentBullet.transform.DOKill();
+        if(currentBullet != null)
+            currentBullet.transform.DOKill();
         Destroy(currentBullet);
     }
 }

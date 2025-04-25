@@ -161,7 +161,10 @@ namespace Core.Scripts
         {
             _kickbackTimer = _kickbackDelay;
             _kickbackValue = _pitchOnKickBack;
-            _pitchWithoutKickback = FutuRiftCapsuleController.Instance.GetPitch();
+            if (FutuRiftCapsuleController.Instance != null)
+            {
+                _pitchWithoutKickback = FutuRiftCapsuleController.Instance.GetPitch();
+            }
         }
 
         private float DeltaAngle(float previousAngle, float currentAngle)

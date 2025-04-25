@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d58f953b372ce44b4684eac3ab8a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 7
   _littleSmoke: {fileID: 0}
   _smoke: {fileID: 0}
   _detonation: {fileID: 0}

@@ -1,16 +1,67 @@
 using UnityEngine;
 
-public class PlaneController : MovingObjectTraectory
+public class PlaneController : MonoBehaviour
 {
-    [SerializeField]
+    [Header("Plane settings")]
+    [SerializeField, Min(1)] private int _health;
+    [Space(30), Header("Particles settings")]
+    [SerializeField] private ParticleSystem _littleSmoke;
+    [SerializeField] private ParticleSystem _smoke;
+    [SerializeField] private ParticleSystem _detonation;
 
-    void Start()
+    private ParticleSystem _currentParticleSystem = null;
+
+    public bool IsHealthBelowHalf { get; private set; } = false;
+    private int Health
     {
+        get
+        {
+            return _health;
+        }
+        set
+        {
+            if ((float)value > (float)_health / 2)
+            {
+                //ChangeParticleSystem(_littleSmoke);
+            }
+            else if (value <= 0)
+            {
+                //ChangeParticleSystem(_detonation);
+            }
+            else
+            {
+                //ChangeParticleSystem(_smoke);
+                IsHealthBelowHalf = true;
+            }
+            _health = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag == "Bullet")
+        {
+            Health--;
+            //shaking
+        }
+        else if (other.gameObject.GetComponent<PlaneController>())
+        {
+            Health = 0;
+        }
+        Debug.Log(Health);
+    }
+
+    private void ChangeParticleSystem(ParticleSystem nextParticleSystem)
+    {
+        if(_currentParticleSystem != nextParticleSystem)
+        {
+            _currentParticleSystem = nextParticleSystem;
+            _currentParticleSystem.Play();
+        }
+    }
+
+    public void DropBombs()
+    {
+        //afterEndOfTrail
     }
 }

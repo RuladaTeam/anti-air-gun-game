@@ -1,12 +1,16 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
+using Core.Scripts;
 
 
 public class BulletTraectory : MovingObjectTraectory
 {
     [SerializeField] private Transform _gunTransform;
-    [SerializeField] private GameObject _bullet;
     [SerializeField, Min(0.1f)] private float _ofsetTime;
+
+    [SerializeField] private GunRotation _gunrotation;
+    [SerializeField] private float _lifeTime;
     private bool _isShooting;
     private float _currentOfsetTime;
 
@@ -14,7 +18,7 @@ public class BulletTraectory : MovingObjectTraectory
     {
         base.OnDrawGizmos();
         Gizmos.color = Color.white;
-        Gizmos.DrawLine(_startTransform.position, new Vector3(_endTransform.position.x, CalculateLineYPos(_startTransform.position, _gunTransform.position, _endTransform.position), _endTransform.position.z));
+        Gizmos.DrawLine(startParabolaTransform.position, new Vector3(endParabolaTransform.position.x, CalculateLineYPos(startParabolaTransform.position, _gunTransform.position, endParabolaTransform.position), endParabolaTransform.position.z));
 
     }
     private void Start()
@@ -26,8 +30,6 @@ public class BulletTraectory : MovingObjectTraectory
     private void Update()
     {
 
-        Shoot();
-
         if (_currentOfsetTime > 0)
         {
             _currentOfsetTime -= Time.deltaTime;
@@ -35,6 +37,11 @@ public class BulletTraectory : MovingObjectTraectory
         else
         {
             _isShooting = false;
+        }
+        
+        if (OVRInput.Get(OVRInput.Button.One))
+        {
+            Shoot();
         }
     }
 
@@ -47,13 +54,19 @@ public class BulletTraectory : MovingObjectTraectory
     {
         if (!_isShooting)
         {
-            Debug.Log("1");
-            GameObject currentBullet = Instantiate(_bullet, _startTransform.position, _gunTransform.rotation);
-            MovingObj(currentBullet.transform);
+            GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation);
+            MovingObjectOnParabola(currentBullet.transform);
+            StartCoroutine(DestroingBullet(currentBullet));
             _isShooting = true;
             _currentOfsetTime = _ofsetTime;
+            _gunrotation.Kickback();
         }
     }
 
-
+    private IEnumerator DestroingBullet(GameObject currentBullet)
+    {
+        yield return new WaitForSeconds(_lifeTime);
+        currentBullet.transform.DOKill();
+        Destroy(currentBullet);
+    }
 }

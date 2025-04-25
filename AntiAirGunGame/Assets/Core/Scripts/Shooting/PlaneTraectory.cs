@@ -15,8 +15,9 @@ public class PlaneTraectory : MovingObjectTraectory
     [SerializeField] private Transform _spawnTransform;
     [SerializeField] private float _lineDuration;
     [Space(10)]
-    [SerializeField, Range(1, 100)] private float _chanceToDiveOnLowHP;
+    [SerializeField, Range(0, 100)] private float _chanceToDiveOnLowHP;
     [SerializeField] private float _radiusOfDive;
+    private bool _isDiving;
     private GameObject _currentPlane;
 
     private void Start()
@@ -48,14 +49,17 @@ public class PlaneTraectory : MovingObjectTraectory
 
     private void Update()
     {
-        if (_currentPlane != null)
+        if (_currentPlane != null && !_isDiving)
         {
-            if (Random.Range(0, 100) < _chanceToDiveOnLowHP && _currentPlane.GetComponent<PlaneController>().IsHealthBelowHalf)
+            if (Random.Range(1, 100) < _chanceToDiveOnLowHP && _currentPlane.GetComponent<PlaneController>().IsHealthBelowHalf)
             {
+                Debug.LogWarning("DIIIIIIVEEEEE");
                 float x = Random.Range(-_radiusOfDive, _radiusOfDive);
                 float y = Random.Range(-_radiusOfDive, _radiusOfDive);
-                endParabolaTransform.position = new Vector3(x, y, endParabolaTransform.position.z);
+                startParabolaTransform = _currentPlane.transform;//dont change parabola?
+                endParabolaTransform.position = new Vector3(x + endParabolaTransform.position.x, y + endParabolaTransform.position.y, endParabolaTransform.position.z);
                 MovingObjectOnParabola(_currentPlane.transform);
+                _isDiving = true;
             }
         }
     }

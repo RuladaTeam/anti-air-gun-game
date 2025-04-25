@@ -21,7 +21,7 @@ public abstract class MovingObjectTraectory : MonoBehaviour
 
     protected void MovingObjectOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
     {
-        DOTween.KillAll();
+        objTransform.DOKill();
         Vector3 previousPosition = objTransform.position;
         objTransform.DOPath(_segmetPoints, _parabolaDuration, pathType, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
         {

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class PlaneTraectory : MovingObjectTraectory
@@ -20,6 +21,10 @@ public class PlaneTraectory : MovingObjectTraectory
 
     private void Start()
     {
+        //if (_planeType == PlaneType.attacker)
+        //{
+        //    endParabolaTransform.
+        //}
         Vector3 lineDirection = (startParabolaTransform.position - _spawnTransform.position).normalized;
         if (lineDirection != Vector3.zero)
         {
@@ -31,20 +36,21 @@ public class PlaneTraectory : MovingObjectTraectory
         }
 
 
-        //_currentPlane.transform.DOMove(startParabolaTransform.position, _lineDuration).OnComplete(() =>
-        //{
-        //    if(_planeType == PlaneType.attacker)
-        //    {
-        //        MovingObjectOnParabola(_currentPlane.transform); // needs añceleration
-        //    }
-        //});
+
+        _currentPlane.transform.DOMove(startParabolaTransform.position, _lineDuration).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            if (_planeType == PlaneType.attacker)
+            {
+                MovingObjectOnParabola(_currentPlane.transform); // needs añceleration
+            }
+        });
     }
 
     private void Update()
     {
-        if(_currentPlane.GetComponent<PlaneController>().IsHealthBelowHalf)
+        if (_currentPlane != null)
         {
-            if(Random.Range(0,100) < _chanceToDiveOnLowHP)
+            if (Random.Range(0, 100) < _chanceToDiveOnLowHP && _currentPlane.GetComponent<PlaneController>().IsHealthBelowHalf)
             {
                 float x = Random.Range(-_radiusOfDive, _radiusOfDive);
                 float y = Random.Range(-_radiusOfDive, _radiusOfDive);

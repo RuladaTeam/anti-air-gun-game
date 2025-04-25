@@ -57,11 +57,20 @@ public class PlaneController : MonoBehaviour
         {
             _currentParticleSystem = nextParticleSystem;
             _currentParticleSystem.Play();
+            //if detonation spawn pieces
         }
     }
 
     public void DropBombs()
     {
         //afterEndOfTrail
+    }
+
+    private void OnDestroy()
+    {
+        if(Health > 0)
+        {
+            Health = 0;
+        }
     }
 }

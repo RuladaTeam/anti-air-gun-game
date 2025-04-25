@@ -175,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 70572440}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.2, y: -10.3, z: 0}
+  m_LocalPosition: {x: 79.5, y: -39.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1040296681
 Transform:
   m_ObjectHideFlags: 0
@@ -463,10 +463,11 @@ MonoBehaviour:
   movingObject: {fileID: 4518945616665175383, guid: e9c6f454ef005ee419421fe1f8b49b04, type: 3}
   startParabolaTransform: {fileID: 357185214}
   endParabolaTransform: {fileID: 1832086463}
-  _duration: 3
+  _parabolaDuration: 0
   segments: 20
   _gunTransform: {fileID: 1012988065}
   _ofsetTime: 1
+  _gunrotation: {fileID: 0}
   _lifeTime: 0.3
 --- !u!1 &1674072836
 GameObject:
@@ -484,7 +485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1674072837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,11 +502,11 @@ MonoBehaviour:
   movingObject: {fileID: 4406666278761200900, guid: 995d5ba51899b6b4ea01cb7409baa431, type: 3}
   startParabolaTransform: {fileID: 46341202}
   endParabolaTransform: {fileID: 70572441}
-  _duration: 0
-  segments: 20
+  _parabolaDuration: 5
+  segments: 30
   _planeType: 1
   _spawnTransform: {fileID: 1817622679}
-  _lineDuration: 1
+  _lineDuration: 3
   _chanceToDiveOnLowHP: 77.8
   _radiusOfDive: 7.53
 --- !u!4 &1674072838
@@ -521,9 +522,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1817622679}
   - {fileID: 46341202}
   - {fileID: 70572441}
-  - {fileID: 1817622679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817622678

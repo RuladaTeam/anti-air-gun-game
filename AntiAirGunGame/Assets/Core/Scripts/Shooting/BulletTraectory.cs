@@ -39,7 +39,8 @@ public class BulletTraectory : MovingObjectTraectory
             _isShooting = false;
         }
         
-        if (OVRInput.Get(OVRInput.Button.One))
+        if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch) && 
+            OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
         {
             Shoot();
         }

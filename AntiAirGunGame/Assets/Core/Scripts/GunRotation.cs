@@ -42,13 +42,11 @@ namespace Core.Scripts
         private float _kickbackValue;
         private float _kickbackTimer;
 		private float _pitchWithoutKickback;
-        private float _initGunRotation;
 
         private Vector3 _barrelDefaultPosition;
         
         private void Start()
         {
-            _initGunRotation = _rotatableTransform.rotation.eulerAngles.y;
             _previousEulerAngles = _rotationWheelTransform.localEulerAngles;
             _totalRotation = _previousEulerAngles;
             
@@ -84,7 +82,7 @@ namespace Core.Scripts
 
             float pitchDirectionCoefficient = deltaRotation.y >= 0 ? -1 : 1;
             _rotatableTransform.eulerAngles = new Vector3(
-                _rotatableTransform.eulerAngles.x, (_totalRotation.y + _initGunRotation)/_rotationRatio,
+                _rotatableTransform.eulerAngles.x, (_totalRotation.y)/_rotationRatio,
                 _rotatableTransform.eulerAngles.z);
 
             _currentRotationWheelValue += -deltaRotation.y * _rotationRollCoefficient;
@@ -143,7 +141,8 @@ namespace Core.Scripts
                 else
                 {
                     _barrelTransform.localPosition = Vector3.Lerp(
-                        barrelFinalPosition, _barrelDefaultPosition, (_kickbackDelay - barrelTimeToKickback - _kickbackTimer)/(_kickbackDelay-barrelTimeToKickback));
+                        barrelFinalPosition, _barrelDefaultPosition, 
+                        (_kickbackDelay - barrelTimeToKickback - _kickbackTimer)/(_kickbackDelay-barrelTimeToKickback));
                     _kickbackValue = _pitchOnKickBack - (_kickbackDelay -_kickbackTimer) * 
                         (_pitchOnKickBack - _pitchWithoutKickback)/_kickbackDelay;  
                 }

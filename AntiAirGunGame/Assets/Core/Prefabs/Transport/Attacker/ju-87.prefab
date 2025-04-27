@@ -395,6 +395,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8964701408012581642, guid: ba5a4768cf57d42cf860872ec66fa196, type: 3}
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: _health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: _planeType
       value: 1
       objectReference: {fileID: 0}

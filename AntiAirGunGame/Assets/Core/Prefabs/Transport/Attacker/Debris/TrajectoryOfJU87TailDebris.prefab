@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: movingObject
       value: 
       objectReference: {fileID: 8309426895427696567, guid: aaa0efedd59b645979854f6139fc5ffe, type: 3}
+    - target: {fileID: 2246332809142646553, guid: 42926dba92a62fb459d2dacd0d1b1581, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 19.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6887271432444857274, guid: 42926dba92a62fb459d2dacd0d1b1581, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

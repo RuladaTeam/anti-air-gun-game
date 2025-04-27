@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,10 +16,12 @@ namespace Core.Scripts
         [SerializeField] private Transform _infoText;
         [Space(10)] 
         [Header("Colors")] 
-        [SerializeField] private Color _defaultColor;
-        [SerializeField] private Color _hoveredColor;
+        [SerializeField] private Material _defaultMaterial;
+        [SerializeField] private Material _hoveredMaterial;
 
         public static event EventHandler<OnBoxHoverEventArgs> OnBoxHover;
+
+        private bool _isSceneLoading;
 
         public class OnBoxHoverEventArgs : EventArgs
         {
@@ -47,27 +50,36 @@ namespace Core.Scripts
 
         private void Hover(Transform box, Transform text)
         {
-            //todo lightning around box
             OnBoxHover?.Invoke(this, new OnBoxHoverEventArgs { Position = transform.position });
-            text.GetComponent<Renderer>().material.SetColor("_BaseColor", _hoveredColor);
+            text.GetComponent<Renderer>().material = _hoveredMaterial;
         }
 
         private void Unhover(Transform box, Transform text)
         {
-            //todo lightning around box
-            //todo sound
-            text.GetComponent<Renderer>().material.SetColor("_BaseColor", _defaultColor);
+            text.GetComponent<Renderer>().material = _defaultMaterial;
         }
 
         public void Play()
         {
-            //todo fade and sound
-            SceneManager.LoadScene(SceneNames.CAR_SCENE_NAME);
+            if (_isSceneLoading) return;
+
+            StartCoroutine(ChangeScene(SceneNames.CAR_SCENE_NAME));
+            _isSceneLoading = true;
         }
 
         public void Info()
         {
-            
+            if (_isSceneLoading) return;
+
+            //StartCoroutine(ChangeScene(SceneNames));
+            _isSceneLoading = true;
+        }
+
+        private IEnumerator ChangeScene(string sceneName)
+        {
+            FadeScreen.Instance.Fade();
+            yield return new WaitForSeconds(FadeScreen.Instance.FadeDuration+1);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

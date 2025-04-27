@@ -1248,10 +1248,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: debris.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: 'debris.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8853477925108519602, guid: e1beb1218438c4c6c993011a98610e35, type: 3}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: 'debris.Array.data[1]'
       value: 
       objectReference: {fileID: 8827751949203266561, guid: 37d03ce85116c457b88373be817cddf1, type: 3}
     - target: {fileID: 8268301704561035156, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}

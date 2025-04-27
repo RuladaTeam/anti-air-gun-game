@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6887271432444857274}
   - component: {fileID: 1502178929487465452}
   m_Layer: 0
-  m_Name: TrajectoryOfExampleDebris1
+  m_Name: TrajectoryOfPZ4HDnishe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _height: 1
-  movingObject: {fileID: 6922962832370795650, guid: eaecfb63ab553f544a0551b03ec3f808, type: 3}
+  movingObject: {fileID: 8853477925108519602, guid: e1beb1218438c4c6c993011a98610e35, type: 3}
   startParabolaTransform: {fileID: 6124306382412779881}
   endParabolaTransform: {fileID: 2246332809142646553}
   parabolaDuration: 2

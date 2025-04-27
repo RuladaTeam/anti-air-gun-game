@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9194764119855829910, guid: 42926dba92a62fb459d2dacd0d1b1581, type: 3}
       propertyPath: m_Name
-      value: TrajectoryOfHE111WingDebris
+      value: TrajectoryOfJU87WingDebris
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -26,7 +26,8 @@ namespace Core.Scripts
 
         private void Start()
         {
-            _fadeMaterial.SetFloat("_Alpha", 0f);
+            _fadeMaterial.SetFloat("_Alpha", 1f);
+            StartCoroutine(IAppear());
         }
         
 
@@ -39,6 +40,16 @@ namespace Core.Scripts
         {
             float fadeDuration = FadeDuration * 100f;
             for (int i = 0; i <= fadeDuration; i++)
+            {
+                _fadeMaterial.SetFloat("_Alpha", i / fadeDuration);
+                yield return new WaitForSeconds(.01f);
+            }
+        }
+        
+        private IEnumerator IAppear()
+        {
+            float fadeDuration = FadeDuration * 100f;
+            for (int i = (int)fadeDuration; i >= 0; i--)
             {
                 _fadeMaterial.SetFloat("_Alpha", i / fadeDuration);
                 yield return new WaitForSeconds(.01f);

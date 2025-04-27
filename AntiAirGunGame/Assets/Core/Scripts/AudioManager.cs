@@ -11,11 +11,8 @@ namespace Core.Scripts
         
         private void Start()
         {
-            if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE_NAME)
-            {
-                MenuInteraction.OnBoxHover += MenuInteraction_OnBoxHover;
-                SoundGenerator.OnSoundGenerated += SoundGenerated_OnSoundGenerated;
-            }
+            MenuInteraction.OnBoxHover += MenuInteraction_OnBoxHover;
+            SoundGenerator.OnSoundGenerated += SoundGenerated_OnSoundGenerated;
         }
 
         private void SoundGenerated_OnSoundGenerated(object sender, SoundGenerator.OnCrowSoundEventArgs e)
@@ -53,11 +50,8 @@ namespace Core.Scripts
 
         private void OnDisable()
         {
-            if (SceneManager.GetActiveScene().name == SceneNames.MAIN_MENU_SCENE_NAME)
-            {
-                MenuInteraction.OnBoxHover -= MenuInteraction_OnBoxHover;
-                SoundGenerator.OnSoundGenerated -= SoundGenerated_OnSoundGenerated;
-            }
+            MenuInteraction.OnBoxHover -= MenuInteraction_OnBoxHover;
+            SoundGenerator.OnSoundGenerated -= SoundGenerated_OnSoundGenerated;
         }
     }
 }

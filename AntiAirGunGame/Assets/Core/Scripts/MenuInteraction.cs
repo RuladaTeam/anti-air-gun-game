@@ -7,9 +7,6 @@ namespace Core.Scripts
 {
     public class MenuInteraction : MonoBehaviour
     {
-        [Header("Boxes")]
-        [SerializeField] private Transform _playBoxTransform;
-        [SerializeField] private Transform _infoBoxTransform;
         [Space(10)] 
         [Header("Text")] 
         [SerializeField] private Transform _playText;
@@ -30,31 +27,31 @@ namespace Core.Scripts
         
         public void HoverPlay()
         {
-            Hover(_playBoxTransform, _playText);
+            Hover(_playText);
         }
         
         public void HoverInfo()
         {
-            Hover(_infoBoxTransform, _infoText);
+            Hover(_infoText);
         }
         
         public void UnhoverPlay()
         {
-            Unhover(_playBoxTransform, _playText);
+            Unhover(_playText);
         }
         
         public void UnhoverInfo()
         {
-            Unhover(_infoBoxTransform, _infoText);
+            Unhover(_infoText);
         }
 
-        private void Hover(Transform box, Transform text)
+        private void Hover(Transform text)
         {
             OnBoxHover?.Invoke(this, new OnBoxHoverEventArgs { Position = transform.position });
             text.GetComponent<Renderer>().material = _hoveredMaterial;
         }
 
-        private void Unhover(Transform box, Transform text)
+        private void Unhover(Transform text)
         {
             text.GetComponent<Renderer>().material = _defaultMaterial;
         }
@@ -71,7 +68,7 @@ namespace Core.Scripts
         {
             if (_isSceneLoading) return;
 
-            //StartCoroutine(ChangeScene(SceneNames));
+            StartCoroutine(ChangeScene(SceneNames.INFO_SCENE_NAME));
             _isSceneLoading = true;
         }
 

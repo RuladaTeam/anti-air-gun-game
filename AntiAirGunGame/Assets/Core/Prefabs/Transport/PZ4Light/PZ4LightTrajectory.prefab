@@ -71,14 +71,14 @@ PrefabInstance:
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: movingObject
       value: 
-      objectReference: {fileID: 4913049865041370965, guid: ba801b38fcbaafe4db04a3a301d10ac9, type: 3}
+      objectReference: {fileID: 5781797121550406089, guid: 7d7899b1ff3be48bf9aab2933e7db512, type: 3}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: _radiusOfDive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: parabolaDuration
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: _chanceToDiveOnLowHP

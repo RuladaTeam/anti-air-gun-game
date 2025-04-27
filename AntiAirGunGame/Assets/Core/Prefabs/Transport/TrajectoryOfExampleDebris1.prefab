@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1383577346884562347
+--- !u!1 &1603554797976079712
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1900271765765527506}
+  - component: {fileID: 2246332809142646553}
   m_Layer: 0
   m_Name: EndParabolaPoint
   m_TagString: Untagged
@@ -16,22 +16,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1900271765765527506
+--- !u!4 &2246332809142646553
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383577346884562347}
+  m_GameObject: {fileID: 1603554797976079712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.4, y: -38.1, z: 0}
+  m_LocalPosition: {x: 63.2, y: -64.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6550217596853709681}
+  m_Father: {fileID: 6887271432444857274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7791623491366037342
+--- !u!1 &7589379676932278165
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5876745509015073186}
+  - component: {fileID: 6124306382412779881}
   m_Layer: 0
   m_Name: StartParabolaPoint
   m_TagString: Untagged
@@ -47,22 +47,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5876745509015073186
+--- !u!4 &6124306382412779881
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7791623491366037342}
+  m_GameObject: {fileID: 7589379676932278165}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6550217596853709681}
+  m_Father: {fileID: 6887271432444857274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8856840574761415517
+--- !u!1 &9194764119855829910
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,8 +70,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6550217596853709681}
-  - component: {fileID: 1273185075227618087}
+  - component: {fileID: 6887271432444857274}
+  - component: {fileID: 1502178929487465452}
   m_Layer: 0
   m_Name: TrajectoryOfExampleDebris1
   m_TagString: Untagged
@@ -79,38 +79,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6550217596853709681
+--- !u!4 &6887271432444857274
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8856840574761415517}
+  m_GameObject: {fileID: 9194764119855829910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5876745509015073186}
-  - {fileID: 1900271765765527506}
+  - {fileID: 6124306382412779881}
+  - {fileID: 2246332809142646553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1273185075227618087
+--- !u!114 &1502178929487465452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8856840574761415517}
+  m_GameObject: {fileID: 9194764119855829910}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a088860e95ff294fb41398ca9643704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 10
+  _height: 37.1
   movingObject: {fileID: 6922962832370795650, guid: eaecfb63ab553f544a0551b03ec3f808, type: 3}
-  startParabolaTransform: {fileID: 5876745509015073186}
-  endParabolaTransform: {fileID: 1900271765765527506}
+  startParabolaTransform: {fileID: 6124306382412779881}
+  endParabolaTransform: {fileID: 2246332809142646553}
   parabolaDuration: 2
   segments: 20

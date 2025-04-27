@@ -53,10 +53,10 @@ MonoBehaviour:
   endParabolaTransform: {fileID: 377440492279182933}
   parabolaDuration: 15
   segments: 30
-  _chanceToDiveOnPlayerOnAttacker: 100
+  _chanceToDiveOnPlayerOnAttacker: 50
   _spawnTransform: {fileID: 1225757646068612913}
   _lineDuration: 5
-  _chanceToDiveOnLowHP: 100
+  _chanceToDiveOnLowHP: 60
   _radiusOfDive: 53.1
 --- !u!1 &2933064343454736990
 GameObject:

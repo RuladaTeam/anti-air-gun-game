@@ -13,6 +13,10 @@ PrefabInstance:
       value: 10.38
       objectReference: {fileID: 0}
     - target: {fileID: 1273185075227618087, guid: 81f94ffe793a7d4479d388504962a07e, type: 3}
+      propertyPath: segments
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273185075227618087, guid: 81f94ffe793a7d4479d388504962a07e, type: 3}
       propertyPath: parabolaDuration
       value: 4
       objectReference: {fileID: 0}

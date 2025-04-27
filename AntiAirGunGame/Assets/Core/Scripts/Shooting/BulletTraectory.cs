@@ -6,9 +6,9 @@ using Core.Scripts;
 
 public class BulletTraectory : MovingObjectTraectory
 {
+    [Space(30), Header("Bullet Settings")]
     [SerializeField] private Transform _gunTransform;
     [SerializeField, Min(0.1f)] private float _ofsetTime;
-
     [SerializeField] private GunRotation _gunrotation;
     [SerializeField] private float _lifeTime;
     private bool _isShooting;
@@ -55,7 +55,7 @@ public class BulletTraectory : MovingObjectTraectory
     {
         if (!_isShooting)
         {
-            GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation);
+            GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation, transform);
             MovingObjectOnParabola(currentBullet.transform);
             StartCoroutine(DestroingBullet(currentBullet));
             _isShooting = true;

@@ -1,17 +1,32 @@
 using DG.Tweening;
 using UnityEngine;
 
+public enum PlaneType
+{
+    bomber, attacker
+}
+
+[RequireComponent(typeof(MovingObjectTraectory))]
 public class PlaneController : MonoBehaviour
 {
+    public delegate void PlaneOnDestroyDelegate();
+
     [Header("Plane settings")]
+    [SerializeField] private PlaneType _planeType;
     [SerializeField, Min(1)] private int _health;
     [Space(30), Header("Particles settings")]
     [SerializeField] private ParticleSystem _littleSmoke;
     [SerializeField] private ParticleSystem _smoke;
     [SerializeField] private ParticleSystem _detonation;
-
     private ParticleSystem _currentParticleSystem = null;
+    private BombsTrajectory _bombsTrajectory;
 
+    public PlaneType planeType
+    {
+        get => _planeType;
+        private set { }
+    }
+    public PlaneOnDestroyDelegate planeOnDestroyDelegate {set; private get; }
     public bool IsHealthBelowHalf { get; private set; } = false;
     private int Health
     {
@@ -43,7 +58,6 @@ public class PlaneController : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            Debug.Log("damage " + Health);
             Health--;
             //shaking
         }
@@ -66,6 +80,8 @@ public class PlaneController : MonoBehaviour
     public void DropBombs()
     {
         //afterEndOfTrail
+        _bombsTrajectory = GetComponent<BombsTrajectory>();
+        _bombsTrajectory.SpawnBombs();
     }
 
     private void OnDestroy()
@@ -75,5 +91,6 @@ public class PlaneController : MonoBehaviour
         {
             Health = 0;
         }
+        planeOnDestroyDelegate();
     }
 }

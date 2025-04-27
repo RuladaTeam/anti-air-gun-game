@@ -13,17 +13,15 @@ public abstract class MovingObjectTraectory : MonoBehaviour
     [SerializeField] protected Transform startParabolaTransform;
     [SerializeField] protected Transform endParabolaTransform;
     [Space(10)]
-    [SerializeField, Min(0.1f)] private float _parabolaDuration;
+    [SerializeField, Min(0.1f)] protected float parabolaDuration;
     [SerializeField] protected int segments= 20;
     private Vector3[] _segmetPoints;
-
-    public GameObject CurrentMovingObject { get; private set; }
 
     protected void MovingObjectOnParabola(Transform objTransform, PathType pathType = PathType.Linear)
     {
         objTransform.DOKill();
         Vector3 previousPosition = objTransform.position;
-        objTransform.DOPath(_segmetPoints, _parabolaDuration, pathType, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
+        objTransform.DOPath(_segmetPoints, parabolaDuration, pathType, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
         {
             Vector3 movementDirection = (objTransform.position - previousPosition).normalized;
 
@@ -39,8 +37,8 @@ public abstract class MovingObjectTraectory : MonoBehaviour
             Destroy(objTransform.gameObject);
 
         });
-
     }
+
 
     protected void OnDrawGizmos()
     {
@@ -58,6 +56,20 @@ public abstract class MovingObjectTraectory : MonoBehaviour
             Vector3 currentPoint = CalculateParabolaPoint(t, startParabolaTransform.position, endParabolaTransform.position, _height);
             _segmetPoints[i-1] = currentPoint;
             Gizmos.DrawLine(previousPoint, currentPoint);
+            previousPoint = currentPoint;
+        }
+    }
+
+    protected void CalculateParabola()
+    {
+        Vector3 topPoint = CalculateParabolaPoint(0.5f, startParabolaTransform.position, endParabolaTransform.position, _height);
+        Vector3 previousPoint = startParabolaTransform.position;
+        _segmetPoints = new Vector3[segments];
+        for (int i = 1; i <= segments; i++)
+        {
+            float t = i / (float)segments;
+            Vector3 currentPoint = CalculateParabolaPoint(t, startParabolaTransform.position, endParabolaTransform.position, _height);
+            _segmetPoints[i - 1] = currentPoint;
             previousPoint = currentPoint;
         }
     }

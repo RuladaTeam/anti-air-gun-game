@@ -11,6 +11,7 @@ public class BulletTraectory : MovingObjectTraectory
     [SerializeField, Min(0.1f)] private float _ofsetTime;
     [SerializeField] private GunRotation _gunrotation;
     [SerializeField] private float _lifeTime;
+    [SerializeField] private ParticleSystem _blow;
     private bool _isShooting;
     private float _currentOfsetTime;
 
@@ -29,7 +30,7 @@ public class BulletTraectory : MovingObjectTraectory
 
     private void Update()
     {
-
+        Shoot();
         if (_currentOfsetTime > 0)
         {
             _currentOfsetTime -= Time.deltaTime;
@@ -61,6 +62,7 @@ public class BulletTraectory : MovingObjectTraectory
             _isShooting = true;
             _currentOfsetTime = _ofsetTime;
             _gunrotation.Kickback();
+            _blow.Play();
         }
     }
 

@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238570581479715974, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Name
-      value: MovingTransport Variant
+      value: ju-87
       objectReference: {fileID: 0}
     - target: {fileID: 4541144444542329705, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_LocalScale.x
@@ -225,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 4541144444542329705, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4590932171325727961, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: m_Mass
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 4820344747953582458, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_LocalScale.x
@@ -382,6 +386,34 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: _hit
+      value: 
+      objectReference: {fileID: 8964701408012581642, guid: ba5a4768cf57d42cf860872ec66fa196, type: 3}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: _planeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: _detonation
+      value: 
+      objectReference: {fileID: 4268195275653008406, guid: 7252b39faef354d9391d51b1bd9fe124, type: 3}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: debris.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: 'debris.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1118863433418857542, guid: bda2ad2ae8dc24b528cd186d9bc6b7de, type: 3}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: 'debris.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8309426895427696567, guid: aaa0efedd59b645979854f6139fc5ffe, type: 3}
+    - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: 'debris.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4788755290629737061, guid: cd8f66e7a152149438664503ee158659, type: 3}
     - target: {fileID: 7562582850139636418, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.75

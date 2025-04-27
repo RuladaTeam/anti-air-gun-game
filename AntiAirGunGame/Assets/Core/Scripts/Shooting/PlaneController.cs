@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlaneType
@@ -17,7 +18,10 @@ public class PlaneController : MonoBehaviour
     [Space(30), Header("Particles settings")]
     [SerializeField] private ParticleSystem _littleSmoke;
     [SerializeField] private ParticleSystem _smoke;
-    [SerializeField] private ParticleSystem _detonation;
+    [SerializeField] private GameObject _detonation;
+    [SerializeField] private GameObject _hit;
+    [SerializeField] private List<GameObject> debris;
+    private int _startHealth;
     private ParticleSystem _currentParticleSystem = null;
     private BombsTrajectory _bombsTrajectory;
 
@@ -36,22 +40,32 @@ public class PlaneController : MonoBehaviour
         }
         set
         {
-            if ((float)value > (float)_health / 2)
+            _health = value;
+            if ((float)_health > (float)_startHealth / 2)
             {
-                //ChangeParticleSystem(_littleSmoke);
+                ChangeParticleSystem(_littleSmoke);
             }
-            else if (value <= 0)
+            else if (_health <= 0)
             {
-                //ChangeParticleSystem(_detonation);
+                Instantiate(_detonation, transform.position, Quaternion.identity).GetComponent<ParticleSystem>().Play();
+                foreach (GameObject item in debris)
+                {
+                    Instantiate(item, transform.position, Quaternion.Euler(0, Random.Range(0, 360), 0)).GetComponent<MovingObjectTraectory>().MovingObjectOnParabola();
+                }
                 Destroy(gameObject);
             }
             else
             {
-                //ChangeParticleSystem(_smoke);
+                ChangeParticleSystem(_smoke);
                 IsHealthBelowHalf = true;
             }
-            _health = value;
+
         }
+    }
+
+    private void Start()
+    {
+        _startHealth = Health;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,6 +73,9 @@ public class PlaneController : MonoBehaviour
         if (other.tag == "Bullet")
         {
             Health--;
+            Instantiate(_hit, other.transform.position, Quaternion.identity, transform).GetComponent<ParticleSystem>().Play();
+            other.transform.DOKill();
+            Destroy(other.gameObject);
             //shaking
         }
         else if (other.gameObject.GetComponent<PlaneController>())
@@ -69,7 +86,7 @@ public class PlaneController : MonoBehaviour
 
     private void ChangeParticleSystem(ParticleSystem nextParticleSystem)
     {
-        if(_currentParticleSystem != nextParticleSystem)
+        if (_currentParticleSystem != nextParticleSystem)
         {
             _currentParticleSystem = nextParticleSystem;
             _currentParticleSystem.Play();
@@ -79,7 +96,6 @@ public class PlaneController : MonoBehaviour
 
     public void DropBombs()
     {
-        //afterEndOfTrail
         _bombsTrajectory = GetComponent<BombsTrajectory>();
         _bombsTrajectory.SpawnBombs();
     }
@@ -91,6 +107,9 @@ public class PlaneController : MonoBehaviour
         {
             Health = 0;
         }
-        planeOnDestroyDelegate();
+        if(planeOnDestroyDelegate != null)
+        {
+            planeOnDestroyDelegate();
+        }
     }
 }

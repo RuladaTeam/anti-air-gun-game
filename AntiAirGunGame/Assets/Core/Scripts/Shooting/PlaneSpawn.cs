@@ -9,66 +9,45 @@ public class PlaneSpawn : MonoBehaviour
     {
         public GameObject group;
         public Transform spawnPointTransform;
-        public float ofsetOfSpawn;
-        public bool canSpawn;
     }
 
-    [Space(20)]
+    [SerializeField, Min(1)] private int _maxSpawns;
     [SerializeField] private float ofsetBetweenSpawns;
-    [SerializeField] private float _ofsetOfSpawnPoints;
     [SerializeField] private List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
-    private float startOfsetOfSpawnPoints;
+    private float startOfsetBetweenSpawns;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for(int i = 0; i < _spawnPoints.Count; i++)
-        {
-            startOfsetOfSpawnPoints = _ofsetOfSpawnPoints;
-            _spawnPoints[i] = new SpawnPoint { spawnPointTransform = _spawnPoints[i].spawnPointTransform, ofsetOfSpawn = _ofsetOfSpawnPoints, canSpawn = true };
-        }
+        startOfsetBetweenSpawns = ofsetBetweenSpawns;
     }
 
     private void Update()
     {
-        if (_ofsetOfSpawnPoints > 0)
+        if(_maxSpawns > _spawnPoints.Count)
         {
-            _ofsetOfSpawnPoints -= Time.deltaTime;
+            _maxSpawns = _spawnPoints.Count;
+        }
+        if (ofsetBetweenSpawns > 0)
+        {
+            ofsetBetweenSpawns -= Time.deltaTime;
         }
         else
         {
-            _ofsetOfSpawnPoints = startOfsetOfSpawnPoints;
-
+            ofsetBetweenSpawns = startOfsetBetweenSpawns;
+            Spawn();
         }
     }
 
+    [ContextMenu("GetSpawn")]
     private void Spawn()
     {
-        int countOfSpawn = Random.Range(1, _spawnPoints.Count);
-        List<SpawnPoint> currentSpawnPoints = _spawnPoints;
+        int countOfSpawn = Random.Range(1, _maxSpawns + 1);
+        List<SpawnPoint> currentSpawnPoints = new List<SpawnPoint>(_spawnPoints);
         for(int i = 0; i < countOfSpawn; i++)
         {
-            int currentSpawnIndex = Random.Range(0, _spawnPoints.Count);
-            if (_spawnPoints[currentSpawnIndex].canSpawn)
-            {
-                Instantiate(_spawnPoints[currentSpawnIndex].group);
-            }
-            else
-            {
-                i--;
-            }
+            int currentSpawnIndex = Random.Range(0, currentSpawnPoints.Count);
+            Instantiate(_spawnPoints[currentSpawnIndex].group, _spawnPoints[currentSpawnIndex].spawnPointTransform);
             currentSpawnPoints.RemoveAt(currentSpawnIndex);
-            StartCoroutine(CanSpawnCoroutine(_spawnPoints[currentSpawnIndex]));
         }
     }
-
-    private IEnumerator CanSpawnCoroutine(SpawnPoint spawnPoint)
-    {
-        spawnPoint.canSpawn = false;
-        yield return new WaitForSeconds(spawnPoint.ofsetOfSpawn);
-        spawnPoint.canSpawn = true;
-    }
-
-
 }

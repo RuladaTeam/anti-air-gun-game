@@ -5,7 +5,7 @@ using DG.Tweening;
 using System.Collections;
 
 
-public abstract class MovingObjectTraectory : MonoBehaviour
+public class MovingObjectTraectory : MonoBehaviour
 {
     [Header("Trajectory Settings")]
     [SerializeField] private float _height = 2f;
@@ -39,6 +39,29 @@ public abstract class MovingObjectTraectory : MonoBehaviour
         });
     }
 
+    public void MovingObjectOnParabola()
+    {
+        CalculateParabola();
+        Transform objTransform = Instantiate(movingObject, transform.position, transform.rotation, transform).GetComponent<Transform>();
+        objTransform.DOKill();
+        Vector3 previousPosition = objTransform.position;
+        objTransform.DOPath(_segmetPoints, parabolaDuration, PathType.Linear, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
+        {
+            Vector3 movementDirection = (objTransform.position - previousPosition).normalized;
+
+            if (movementDirection != Vector3.zero)
+            {
+                objTransform.rotation = Quaternion.LookRotation(movementDirection);
+            }
+
+            previousPosition = objTransform.position;
+        }
+        ).OnComplete(() =>
+        {
+            Destroy(objTransform.gameObject);
+
+        });
+    }
 
     protected void OnDrawGizmos()
     {

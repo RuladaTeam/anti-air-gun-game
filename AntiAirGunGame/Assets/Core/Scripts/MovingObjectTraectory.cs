@@ -55,6 +55,10 @@ public class MovingObjectTraectory : MonoBehaviour
             }
 
             previousPosition = objTransform.position;
+        }).OnComplete(() =>
+        {
+            Destroy(objTransform.gameObject);
+
         });
     }
 

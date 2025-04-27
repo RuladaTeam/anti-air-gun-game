@@ -118,6 +118,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.51
       objectReference: {fileID: 0}
+    - target: {fileID: 4084848443137015540, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 207.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4238570581479715974, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Name
       value: he111
@@ -128,7 +132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5155835262057113412, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Size.y
-      value: 4.363969
+      value: 6.016197
       objectReference: {fileID: 0}
     - target: {fileID: 5155835262057113412, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Size.z
@@ -136,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5155835262057113412, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Center.y
-      value: 0.24867105
+      value: 0.23464108
       objectReference: {fileID: 0}
     - target: {fileID: 5155835262057113412, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_Center.z
@@ -149,15 +153,19 @@ PrefabInstance:
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: 'debris.Array.data[0]'
       value: 
-      objectReference: {fileID: 1431711277953836950, guid: 2619d3da52b3849cca77a02cf2527d69, type: 3}
+      objectReference: {fileID: 780118988359796001, guid: 4a616c2a0ba6eb24f916fe2a1141844d, type: 3}
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: 'debris.Array.data[1]'
       value: 
-      objectReference: {fileID: 6388560138016964022, guid: 9ed16a5cd5084435bb5c28675417f355, type: 3}
+      objectReference: {fileID: 3290779542472048103, guid: e490e2b5b1c911448a969f3f30e0b044, type: 3}
     - target: {fileID: 7317833613635080725, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: 'debris.Array.data[2]'
       value: 
-      objectReference: {fileID: 193684618834045705, guid: 563bb984aaca24adfbf31b03b5c6a765, type: 3}
+      objectReference: {fileID: 2490052213848559057, guid: de23f239f96762746962bc55350ae4b7, type: 3}
+    - target: {fileID: 8061009671550467422, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
+      propertyPath: _height
+      value: 11.22
+      objectReference: {fileID: 0}
     - target: {fileID: 8268301704561035156, guid: 6124484ccc3611f459fd4bfba69e295f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

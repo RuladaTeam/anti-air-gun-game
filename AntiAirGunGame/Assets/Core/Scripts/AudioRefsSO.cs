@@ -6,5 +6,7 @@ namespace Core.Scripts
     public class AudioRefsSO : ScriptableObject
     {
         public AudioClip BoxSound;
+        public AudioClip[] CrowSound;
+        public AudioClip[] MenuGunSound;
     }
 }

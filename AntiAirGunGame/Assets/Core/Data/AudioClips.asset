@@ -13,3 +13,10 @@ MonoBehaviour:
   m_Name: AudioClips
   m_EditorClassIdentifier: 
   BoxSound: {fileID: 8300000, guid: 97f0870b05c22e34ab3c1fe9860d3b23, type: 3}
+  CrowSound:
+  - {fileID: 8300000, guid: dd850fc91e3b21643aa291cea98ad8b0, type: 3}
+  - {fileID: 8300000, guid: 07499159ff8bede448e0d60794765706, type: 3}
+  MenuGunSound:
+  - {fileID: 8300000, guid: efd08983e4e84364bae17f6a6448ae62, type: 3}
+  - {fileID: 8300000, guid: d498f31d21d93904ead531e7f68e5b29, type: 3}
+  - {fileID: 8300000, guid: 9a03175d212bbf4458a0e2d90c6012a1, type: 3}

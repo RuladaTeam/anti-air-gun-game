@@ -30,6 +30,10 @@ public class PlaneTraectory : MovingObjectTraectory
 
         _currentPlane.planeOnDestroyDelegate = () => { Destroy(gameObject); };
 
+        if (_currentPlane.planeType == PlaneType.bomber)
+        {
+            _currentPlane.Invoke(nameof(_currentPlane.DropBombs), _lineDuration/3);
+        }
         _currentPlane.transform.DOMove(startParabolaTransform.position, _lineDuration).SetEase(Ease.Linear).OnComplete(() =>
         {
             if (_currentPlane.planeType == PlaneType.attacker)
@@ -43,9 +47,9 @@ public class PlaneTraectory : MovingObjectTraectory
                 MovingObjectOnParabola(_currentPlane.transform); // needs añceleration
                 _isDiving = true;
             }
-            else
+            if(_currentPlane.planeType == PlaneType.bomber)
             {
-                _currentPlane.DropBombs();
+                Destroy(_currentPlane.gameObject);
             }
         });
     }

@@ -20,3 +20,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: efd08983e4e84364bae17f6a6448ae62, type: 3}
   - {fileID: 8300000, guid: d498f31d21d93904ead531e7f68e5b29, type: 3}
   - {fileID: 8300000, guid: 9a03175d212bbf4458a0e2d90c6012a1, type: 3}
+  - {fileID: 8300000, guid: 493db67243fed7844ba6d12a125413a8, type: 3}
+  - {fileID: 8300000, guid: e6ea9081051aebe4ba741ebd873e072a, type: 3}
+  AAGSound:
+  - {fileID: 8300000, guid: b046d7f18c697384ab19d96ccd8862be, type: 3}
+  HE111Sounds: []
+  JU87Sounds:
+  - {fileID: 8300000, guid: 500f8eb438e90a142ae3e1c67c01b51b, type: 3}
+  TankSounds: []
+  Explosion: []

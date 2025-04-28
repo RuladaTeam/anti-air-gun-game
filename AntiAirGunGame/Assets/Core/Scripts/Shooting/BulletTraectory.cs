@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
@@ -12,6 +13,9 @@ public class BulletTraectory : MovingObjectTraectory
     [SerializeField] private GunRotation _gunrotation;
     [SerializeField] private float _lifeTime;
     [SerializeField] private ParticleSystem _blow;
+
+    public static event EventHandler OnAAGShoot;
+    
     private bool _isShooting;
     private float _currentOfsetTime;
 
@@ -55,6 +59,7 @@ public class BulletTraectory : MovingObjectTraectory
     {
         if (!_isShooting)
         {
+            OnAAGShoot?.Invoke(this, EventArgs.Empty);
             GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation, transform);
             MovingObjectOnParabola(currentBullet.transform);
             StartCoroutine(DestroingBullet(currentBullet));

@@ -43,7 +43,7 @@ public class PlaneTraectory : MovingObjectTraectory
                     endParabolaTransform.position = FindFirstObjectByType<BulletTraectory>().transform.position; //weird
                     CalculateParabola();
                 }
-                _currentPlane.Invoke(nameof(_currentPlane.DropBombs), parabolaDuration/2);
+                StartCoroutine(OnDroppingBombs());
                 MovingObjectOnParabola(_currentPlane.transform); // needs añceleration
                 _isDiving = true;
             }
@@ -73,6 +73,16 @@ public class PlaneTraectory : MovingObjectTraectory
         }
     }
 
+    private IEnumerator OnDroppingBombs()
+    {
+        yield return new WaitForSeconds(parabolaDuration / 2);
+        _currentPlane.DropBombs();
+        if (_currentPlane.planeType == PlaneType.attacker)
+        {
+            //do method of end
+        }
+    }
+
     private new void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -81,5 +91,10 @@ public class PlaneTraectory : MovingObjectTraectory
         Gizmos.DrawLine(_spawnTransform.position, startParabolaTransform.position);
         Gizmos.color = new Color(0, 0, 1, 0.3f);
         Gizmos.DrawSphere(endParabolaTransform.position, _radiusOfDive);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

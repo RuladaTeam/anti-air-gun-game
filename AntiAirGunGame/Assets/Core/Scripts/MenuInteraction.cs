@@ -60,7 +60,7 @@ namespace Core.Scripts
         {
             if (_isSceneLoading) return;
 
-            StartCoroutine(ChangeScene(SceneNames.CAR_SCENE_NAME));
+            GameManager.Instance.ChangeScene(SceneNames.CAR_SCENE_NAME);
             _isSceneLoading = true;
         }
 
@@ -68,15 +68,8 @@ namespace Core.Scripts
         {
             if (_isSceneLoading) return;
 
-            StartCoroutine(ChangeScene(SceneNames.INFO_SCENE_NAME));
+            GameManager.Instance.ChangeScene(SceneNames.INFO_SCENE_NAME);
             _isSceneLoading = true;
-        }
-
-        private IEnumerator ChangeScene(string sceneName)
-        {
-            FadeScreen.Instance.Fade();
-            yield return new WaitForSeconds(FadeScreen.Instance.FadeDuration+1);
-            SceneManager.LoadScene(sceneName);
         }
     }
 }

@@ -7,6 +7,7 @@ using Core.Scripts;
 public class BulletTraectory : MovingObjectTraectory
 {
     [Space(30), Header("Bullet Settings")]
+    [SerializeField] private GameObject _tracerBullet;
     [SerializeField] private Transform _gunTransform;
     [SerializeField, Min(0.1f)] private float _ofsetTime;
     [SerializeField] private GunRotation _gunrotation;
@@ -14,6 +15,7 @@ public class BulletTraectory : MovingObjectTraectory
     [SerializeField] private ParticleSystem _blow;
     private bool _isShooting;
     private float _currentOfsetTime;
+    private int _bulletsToTracer = 4;
 
     private new void OnDrawGizmos()
     {
@@ -53,9 +55,20 @@ public class BulletTraectory : MovingObjectTraectory
 
     private void Shoot()
     {
+
+        GameObject currentBullet;
         if (!_isShooting)
         {
-            GameObject currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation, transform);
+            if (_bulletsToTracer > 0)
+            {
+                _bulletsToTracer--;
+                currentBullet = Instantiate(movingObject, startParabolaTransform.position, _gunTransform.rotation, transform);
+            }
+            else
+            {
+                _bulletsToTracer = 4;
+                currentBullet = Instantiate(_tracerBullet, startParabolaTransform.position, _gunTransform.rotation, transform);
+            }
             MovingObjectOnParabola(currentBullet.transform);
             StartCoroutine(DestroingBullet(currentBullet));
             _isShooting = true;

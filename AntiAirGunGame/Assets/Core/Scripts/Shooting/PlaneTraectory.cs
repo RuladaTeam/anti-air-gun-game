@@ -76,7 +76,7 @@ public class PlaneTraectory : MovingObjectTraectory
 
     private IEnumerator OnDroppingBombs()
     {
-        yield return new WaitForSeconds(parabolaDuration / 2);
+        yield return new WaitForSeconds(parabolaDuration / 3);
         _currentPlane.DropBombs();
         if (_currentPlane.planeType == PlaneType.attacker)
         {

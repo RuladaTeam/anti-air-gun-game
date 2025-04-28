@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,7 +29,17 @@ namespace Core.Scripts
         private IEnumerator IChangeScene(string sceneName)
         {
             FadeScreen.Instance.Fade();
+
             yield return new WaitForSeconds(FadeScreen.Instance.FadeDuration+1);
+            MovingObjectTraectory[] movingObjects = FindObjectsByType<MovingObjectTraectory>(
+                FindObjectsInactive.Exclude,
+                FindObjectsSortMode.None
+            );
+            foreach (var component in movingObjects)
+            {
+                component.gameObject.transform.DOKill();
+                Destroy(component.gameObject);
+            }
             SceneManager.LoadScene(sceneName);
         }
     }

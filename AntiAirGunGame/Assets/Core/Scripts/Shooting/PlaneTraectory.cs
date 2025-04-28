@@ -1,3 +1,4 @@
+using Core.Scripts;
 using DG.Tweening;
 using System.Collections;
 using Unity.VisualScripting;
@@ -65,7 +66,7 @@ public class PlaneTraectory : MovingObjectTraectory
                 float z = Random.Range(-_radiusOfDive, _radiusOfDive);
                 Vector3 deltaPos = endParabolaTransform.position - startParabolaTransform.position;
                 startParabolaTransform.position = _currentPlane.transform.position;
-                endParabolaTransform.position = new Vector3(x + endParabolaTransform.position.x + deltaPos.x, endParabolaTransform.position.y, z + endParabolaTransform.position.z + +deltaPos.z);
+                endParabolaTransform.position = new Vector3(x + endParabolaTransform.position.x - deltaPos.x, endParabolaTransform.position.y, z + endParabolaTransform.position.z - deltaPos.z);
                 CalculateParabola();
                 MovingObjectOnParabola(_currentPlane.transform);
                 
@@ -79,7 +80,7 @@ public class PlaneTraectory : MovingObjectTraectory
         _currentPlane.DropBombs();
         if (_currentPlane.planeType == PlaneType.attacker)
         {
-            //do method of end
+            GameManager.Instance.ChangeScene(SceneNames.StringSceneNames[FindFirstObjectByType<BulletTraectory>().GetComponent<TimerOnLevel>().sceneName]);
         }
     }
 

@@ -24886,11 +24886,19 @@ PrefabInstance:
     - target: {fileID: -7918335002988649766, guid: 66aa0bf3a3428d343a4c547c172944b7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f90474bffd9e63d47bb0e038f1f18ee2, type: 2}
+      objectReference: {fileID: 2100000, guid: 7512932feeabb204f8b239bd283aaa36, type: 2}
     - target: {fileID: -7918335002988649766, guid: 66aa0bf3a3428d343a4c547c172944b7, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 19b7b27389b12a241bcd6be776aeb04b, type: 2}
+    - target: {fileID: -7127088057484462856, guid: 66aa0bf3a3428d343a4c547c172944b7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7512932feeabb204f8b239bd283aaa36, type: 2}
+    - target: {fileID: -3254607146953738181, guid: 66aa0bf3a3428d343a4c547c172944b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 66aa0bf3a3428d343a4c547c172944b7, type: 3}
       propertyPath: m_Name
       value: FullLocation
@@ -27808,6 +27816,11 @@ SkinnedMeshRenderer:
     m_Center: {x: -12.117856, y: 9.813629, z: 11.834183}
     m_Extent: {x: 7.05943, y: 7.093504, z: 6.0147705}
   m_DirtyAABB: 0
+--- !u!198 &863649810 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7618106914261996269, guid: 1ed61c66bf8295c41978e5698cad3dbd, type: 3}
+  m_PrefabInstance: {fileID: 166730026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864752556
 GameObject:
   m_ObjectHideFlags: 0
@@ -72890,7 +72903,7 @@ MonoBehaviour:
   _ofsetTime: 0.8
   _gunrotation: {fileID: 5624291842028955057}
   _lifeTime: 3
-  _blow: {fileID: 0}
+  _blow: {fileID: 863649810}
 --- !u!1 &5991641629418790884
 GameObject:
   m_ObjectHideFlags: 0

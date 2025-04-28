@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
-using DG;
 using DG.Tweening;
-using System.Collections;
 
 
 public class MovingObjectTraectory : MonoBehaviour

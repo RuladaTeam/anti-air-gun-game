@@ -3,7 +3,32 @@ guid: e8acb2817f1d14787ad5f2049b0e48fe
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_0-he111_Details.jpg
+    second: {fileID: 2100000, guid: 74424e0916b8f54499b846e83d10f073, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_1-he111_Details.jpg
+    second: {fileID: 2100000, guid: be8ae207e5d3eb24d925c9369256ec84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_2-he111_Rumpf.jpg
+    second: {fileID: 2100000, guid: 02c7de9fceac5b14b9e5258119068e74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_3-default-grey.jpg
+    second: {fileID: 2100000, guid: b0d73ae3b4a61414f86d42cfa3c6e345, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat_4-He111_wings.jpg
+    second: {fileID: 2100000, guid: 111af09ed269aba49a6b78d1a84abe2c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

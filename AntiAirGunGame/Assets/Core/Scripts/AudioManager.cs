@@ -13,6 +13,12 @@ namespace Core.Scripts
         {
             MenuInteraction.OnBoxHover += MenuInteraction_OnBoxHover;
             SoundGenerator.OnSoundGenerated += SoundGenerated_OnSoundGenerated;
+            BulletTraectory.OnAAGShoot += BulletTraectory_OnAAGShoot;
+        }
+
+        private void BulletTraectory_OnAAGShoot(object sender, EventArgs e)
+        {
+            PlaySound(_audioRefsSO.AAGSound, Vector3.zero);
         }
 
         private void SoundGenerated_OnSoundGenerated(object sender, SoundGenerator.OnCrowSoundEventArgs e)
@@ -51,7 +57,8 @@ namespace Core.Scripts
         private void OnDisable()
         {
             MenuInteraction.OnBoxHover -= MenuInteraction_OnBoxHover;
-            SoundGenerator.OnSoundGenerated -= SoundGenerated_OnSoundGenerated;
+            SoundGenerator.OnSoundGenerated -= SoundGenerated_OnSoundGenerated;           
+            BulletTraectory.OnAAGShoot -= BulletTraectory_OnAAGShoot;
         }
     }
 }

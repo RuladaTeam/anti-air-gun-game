@@ -20,15 +20,8 @@ namespace Core.Scripts
 
             if (_timer >= _sceneLifetime)
             {
-                StartCoroutine(ChangeScene());
+                GameManager.Instance.ChangeScene(SceneNames.StringSceneNames[_sceneToLoad]);
             }
-        }
-
-        private IEnumerator ChangeScene()
-        {
-            FadeScreen.Instance.Fade();
-            yield return new WaitForSeconds(FadeScreen.Instance.FadeDuration+1);
-            SceneManager.LoadScene(SceneNames.StringSceneNames[_sceneToLoad]);
         }
     }
 }

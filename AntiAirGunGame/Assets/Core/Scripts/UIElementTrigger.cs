@@ -20,6 +20,7 @@ namespace Core.Scripts
         
         private void OnTriggerEnter(Collider other)
         {
+            if (!other.gameObject.CompareTag("Player")) return;
             if (_stoppable)
             {
                 InfoSceneMovement.Instance.Stop();

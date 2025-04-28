@@ -21,6 +21,7 @@ public class MovingObjectTraectory : MonoBehaviour
     {
         objTransform.DOKill();
         Vector3 previousPosition = objTransform.position;
+        CalculateParabola();
         objTransform.DOPath(_segmetPoints, parabolaDuration, pathType, PathMode.Full3D, 10, Color.red).SetEase(Ease.Linear).OnUpdate(() =>
         {
             Vector3 movementDirection = (objTransform.position - previousPosition).normalized;

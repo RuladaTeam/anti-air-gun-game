@@ -36,7 +36,7 @@ namespace Core.Scripts
 
         private void MenuInteraction_OnBoxHover(object sender, MenuInteraction.OnBoxHoverEventArgs e)
         {
-            PlaySound(_audioRefsSO.BoxSound, e.Position, .3f);
+            PlaySound(_audioRefsSO.BoxSound, e.Position, .1f);
         }
 
         private static void PlaySound(AudioClip clip, Vector3 position, float volume=1f)

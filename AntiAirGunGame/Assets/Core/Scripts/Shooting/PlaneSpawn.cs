@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class PlaneSpawn : MonoBehaviour
 
     void Start()
     {
+        Spawn();
         startOfsetBetweenSpawns = ofsetBetweenSpawns;
         if (_maxSpawns > _spawnPoints.Count)
         {
@@ -55,7 +57,7 @@ public class PlaneSpawn : MonoBehaviour
         List<Transform> currentSpawnPoints = new List<Transform>(_spawnPoints);
         for(int i = 0; i < countOfSpawn; i++)
         {
-            int currentPlane = Random.Range(1, planeTrajectories.Count);
+            int currentPlane = Random.Range(0, planeTrajectories.Count);
             int currentSpawnIndex = Random.Range(0, currentSpawnPoints.Count);
             Instantiate(planeTrajectories[currentPlane], currentSpawnPoints[currentSpawnIndex]).SetActive(true);
             currentSpawnPoints.RemoveAt(currentSpawnIndex);

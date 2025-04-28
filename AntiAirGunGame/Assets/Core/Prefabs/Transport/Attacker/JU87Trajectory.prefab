@@ -13,6 +13,10 @@ PrefabInstance:
       value: 942
       objectReference: {fileID: 0}
     - target: {fileID: 377440492279182933, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -263.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 377440492279182933, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: _height
-      value: 50
+      value: 71.6
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: movingObject
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: parabolaDuration
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: _chanceToDiveOnLowHP

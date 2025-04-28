@@ -32,7 +32,6 @@ public class BulletTraectory : MovingObjectTraectory
 
     private void Update()
     {
-        Shoot();
         if (_currentOfsetTime > 0)
         {
             _currentOfsetTime -= Time.deltaTime;

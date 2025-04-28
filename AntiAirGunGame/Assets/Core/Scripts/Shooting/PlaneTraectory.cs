@@ -32,7 +32,7 @@ public class PlaneTraectory : MovingObjectTraectory
 
         if (_currentPlane.planeType == PlaneType.bomber)
         {
-            _currentPlane.Invoke(nameof(_currentPlane.DropBombs), _lineDuration/3);
+            _currentPlane.Invoke(nameof(_currentPlane.DropBombs), _lineDuration -  _lineDuration/4);
         }
         _currentPlane.transform.DOMove(startParabolaTransform.position, _lineDuration).SetEase(Ease.Linear).OnComplete(() =>
         {
@@ -49,7 +49,7 @@ public class PlaneTraectory : MovingObjectTraectory
             }
             if(_currentPlane.planeType == PlaneType.bomber)
             {
-                Destroy(_currentPlane.gameObject);
+                _currentPlane.gameObject.SetActive(false);
             }
         });
     }

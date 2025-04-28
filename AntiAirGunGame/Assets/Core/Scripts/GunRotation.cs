@@ -81,9 +81,9 @@ namespace Core.Scripts
             _previousEulerAngles = currentEulerAngles;
 
             float pitchDirectionCoefficient = deltaRotation.y >= 0 ? -1 : 1;
-            _rotatableTransform.eulerAngles = new Vector3(
-                _rotatableTransform.eulerAngles.x, (_totalRotation.y)/_rotationRatio,
-                _rotatableTransform.eulerAngles.z);
+            _rotatableTransform.localEulerAngles = new Vector3(
+                _rotatableTransform.localEulerAngles.x, (_totalRotation.y)/_rotationRatio,
+                _rotatableTransform.localEulerAngles.z);
 
             _currentRotationWheelValue += -deltaRotation.y * _rotationRollCoefficient;
             _currentPitchWheelValue += -deltaRotation.y * _rotationPitchCoefficient * pitchDirectionCoefficient;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
@@ -12,8 +13,15 @@ public class TimerOnLevel : MonoBehaviour
         IEnumerator Timer()
         {
             yield return new WaitForSeconds(_timeForEndOfLevel);
+            MovingObjectTraectory[] movingObjects = FindObjectsByType<MovingObjectTraectory>(
+            FindObjectsInactive.Exclude,
+            FindObjectsSortMode.None
+            );
+            foreach (var component in movingObjects)
+            {
+                Destroy(component.gameObject);
+            }
             //do method of end
         }
     }
-
 }

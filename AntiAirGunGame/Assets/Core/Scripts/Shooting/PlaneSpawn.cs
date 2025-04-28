@@ -10,6 +10,18 @@ public class PlaneSpawn : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     private float startOfsetBetweenSpawns;
 
+    private void OnDisable()
+    {
+        MovingObjectTraectory[] movingObjects = FindObjectsByType<MovingObjectTraectory>(
+            FindObjectsInactive.Exclude,
+            FindObjectsSortMode.None
+        );
+        foreach (var component in movingObjects)
+        {
+            Destroy(component.gameObject);
+        }
+    }
+
     void Start()
     {
         startOfsetBetweenSpawns = ofsetBetweenSpawns;

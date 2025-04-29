@@ -3,7 +3,122 @@ guid: 7f21f231443684441bd100acd477cb24
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FD
+    second: {fileID: 2100000, guid: 5322c41f523d27043a893de9243199c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 8dbb2305f3396db44bde4eb2c06a82e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: ef6db452e7f301f48a162ddb82fd7bf8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: b85fffd6644de434e974af3ddf8ac0eb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: fccfb5de73770af4e8b421b90a750641, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 6fed2ba9773ffa54b8b32da98ff5f7b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: d2ac03239fef19b49b955ba832c895ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Padik
+    second: {fileID: 2100000, guid: da7e9aa24bdca124999408a586577062, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: 5fe9cdd52b7d4704985eefc1f76633d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: texture_material
+    second: {fileID: 2100000, guid: 70cd37d97e1074f4287e670a499e0c91, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fuoundament
+    second: {fileID: 2800000, guid: 35912fdcc98da0c44803294e46c40b21, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PadikKrilco
+    second: {fileID: 2800000, guid: b5c904e2c5a00294c9a9601dc2d9d67f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PanelHouse2_1tex
+    second: {fileID: 2800000, guid: 7f96fe5f9ffb0de4db39d2925e0cbdb8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PanelHouseDoor
+    second: {fileID: 2800000, guid: 3883893d9c1eb9441a65b4d6416d6127, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PanelHouseWindows
+    second: {fileID: 2800000, guid: 6d724e45b8777144580e10aa820a4068, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Roof
+    second: {fileID: 2800000, guid: 3eef21131d6e2854fa64de077d440a42, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: aerial_grass_rock_diff_2k
+    second: {fileID: 2800000, guid: 61fe7fc21d04ceb448430495ae23ee6e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: aerial_grass_rock_nor_gl_2k
+    second: {fileID: 2800000, guid: f72330b40bf47974282f311e59a026b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: aerial_grass_rock_rough_2k
+    second: {fileID: 2800000, guid: 1e64370c491feb74887868b5cff4c76b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: foresta pix4d_texture
+    second: {fileID: 2800000, guid: d7b7248e7f06dee4abc435c6493c89cd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: gravel_road_diff_2k
+    second: {fileID: 2800000, guid: 8d83b53750679f94fa010c19b6d6060a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: gravel_road_nor_gl_2k
+    second: {fileID: 2800000, guid: b7856b72252249342a0b5e30d21d5cd7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: gravel_road_rough_2k
+    second: {fileID: 2800000, guid: bf79a9c0a9aa3da46851a1085750de5a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

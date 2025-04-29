@@ -82,7 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: _chanceToDiveOnLowHP
-      value: 74.8
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343720669608629039, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
+      propertyPath: _chanceToDiveOnPlayerOnAttacker
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8408485047933555657, guid: 3e585d15f830f5948b8c85d265e2e97e, type: 3}
       propertyPath: m_LocalPosition.x

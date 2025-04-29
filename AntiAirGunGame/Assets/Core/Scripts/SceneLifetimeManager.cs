@@ -19,8 +19,13 @@ namespace Core.Scripts
                 }
                 _lifetimes[i].gameObject.SetActive(false);
             }
-        
+            
             _lifetimeCounter++;
+            
+            if (_lifetimeCounter > _lifetimes.Length)
+            {
+                _lifetimeCounter = 0;
+            }
         }
     }
 }

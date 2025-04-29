@@ -7,7 +7,7 @@ namespace Core.Scripts
         public const string MAIN_MENU_SCENE_NAME = "MainMenuScene";
         public const string CAR_SCENE_NAME = "CarScene";
         public const string BATTLEFIELD_PLANES_SCENE_NAME = "BattleFieldPlanesScene";
-        public const string BATTLEFIELD_TANKS_SCENE_NAME = "BattleFieldTanksScene";
+        public const string BATTLEFIELD_TANKS_SCENE_NAME = "BattleFieldTancks";
         public const string BATTLEFIELD_NIGHT_SCENE_NAME = "BattleFieldNightScene";
         public const string INFO_SCENE_NAME = "InfoScene";
 

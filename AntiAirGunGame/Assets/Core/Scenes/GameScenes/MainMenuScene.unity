@@ -26303,6 +26303,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1310475785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2144296967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144296969}
+  - component: {fileID: 2144296968}
+  m_Layer: 0
+  m_Name: Capsule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2144296968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144296967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a92fcb66ea7b4438fb13a33ab622ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ipAddress: 10.112.15.33
+  _port: 6065
+  _initialPitch: 0
+  _initialRoll: 0
+  _maxPitchOffset: 0
+  _maxRollOffset: 0
+--- !u!4 &2144296969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144296967}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &18760369706684460
 GameObject:
   m_ObjectHideFlags: 0
@@ -31168,3 +31218,4 @@ SceneRoots:
   - {fileID: 288645579}
   - {fileID: 1474031864}
   - {fileID: 1837828190}
+  - {fileID: 2144296969}

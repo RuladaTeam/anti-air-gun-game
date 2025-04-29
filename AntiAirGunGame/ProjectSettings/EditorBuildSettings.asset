@@ -20,12 +20,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Core/Scenes/GameScenes/InfoScene.unity
     guid: 8b065f6d095b2a04dbdb994205f7dd4b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Core/Scenes/GameScenes/BattleFieldTanksScene.unity
     guid: 1ac014e95d9b9b448b492e85295ace1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Core/Scenes/GameScenes/BattleFieldNightScene.unity
     guid: 0fc5af08557df5d4cb8df18ad019aaaa
+  - enabled: 1
+    path: Assets/Core/Scenes/GameScenes/BattleFieldTancks.unity
+    guid: a0c250a7dfd7e2a47a59319d3beeb8db
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: f5a23129f1b0cda4f80b8a8f060ebe43, type: 2}

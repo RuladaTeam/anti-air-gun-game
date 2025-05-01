@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Core/Scenes/GameScenes/BattleFieldNightScene.unity
     guid: 0fc5af08557df5d4cb8df18ad019aaaa
   - enabled: 1
-    path: Assets/Core/Scenes/GameScenes/BattleFieldTancks.unity
+    path: Assets/Core/Scenes/GameScenes/BattleFieldTanksScene.unity
     guid: a0c250a7dfd7e2a47a59319d3beeb8db
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

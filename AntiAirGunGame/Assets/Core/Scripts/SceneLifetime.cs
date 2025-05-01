@@ -20,7 +20,7 @@ namespace Core.Scripts
 
             if (_timer >= _sceneLifetime)
             {
-                GameManager.Instance.ChangeScene(SceneNames.StringSceneNames[_sceneToLoad]);
+                SceneTransitionProvider.Instance.ChangeScene(SceneNames.StringSceneNames[_sceneToLoad]);
             }
         }
     }

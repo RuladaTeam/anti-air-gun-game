@@ -45,7 +45,7 @@ public class PlaneTraectory : MovingObjectTraectory
                     CalculateParabola();
                 }
                 StartCoroutine(OnDroppingBombs());
-                MovingObjectOnParabola(_currentPlane.transform); // needs añceleration
+                MovingObjectOnParabola(_currentPlane.transform); // needs aï¿½celeration
                 _isDiving = true;
             }
             if(_currentPlane.planeType == PlaneType.bomber)
@@ -80,7 +80,7 @@ public class PlaneTraectory : MovingObjectTraectory
         _currentPlane.DropBombs();
         if (_currentPlane.planeType == PlaneType.attacker)
         {
-            GameManager.Instance.ChangeScene(SceneNames.StringSceneNames[FindFirstObjectByType<BulletTraectory>().GetComponent<TimerOnLevel>().sceneName]);
+            SceneTransitionProvider.Instance.ChangeScene(SceneNames.StringSceneNames[FindFirstObjectByType<BulletTraectory>().GetComponent<TimerOnLevel>().sceneName]);
         }
     }
 

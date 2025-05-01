@@ -13,7 +13,7 @@ public class TimerOnLevel : MonoBehaviour
         IEnumerator Timer()
         {
             yield return new WaitForSeconds(_timeForEndOfLevel);
-            GameManager.Instance.ChangeScene(SceneNames.StringSceneNames[sceneName]);
+            SceneTransitionProvider.Instance.ChangeScene(SceneNames.StringSceneNames[sceneName]);
         }
 
         StartCoroutine(Timer());

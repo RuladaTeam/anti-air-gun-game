@@ -22,7 +22,7 @@ namespace Core.Scripts
             
             _lifetimeCounter++;
             
-            if (_lifetimeCounter > _lifetimes.Length)
+            if (_lifetimeCounter == _lifetimes.Length)
             {
                 _lifetimeCounter = 0;
             }

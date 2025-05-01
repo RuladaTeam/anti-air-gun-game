@@ -60,7 +60,7 @@ namespace Core.Scripts
         {
             if (_isSceneLoading) return;
 
-            GameManager.Instance.ChangeScene(SceneNames.CAR_SCENE_NAME);
+            SceneTransitionProvider.Instance.ChangeScene(SceneNames.CAR_SCENE_NAME);
             _isSceneLoading = true;
         }
 
@@ -68,7 +68,7 @@ namespace Core.Scripts
         {
             if (_isSceneLoading) return;
 
-            GameManager.Instance.ChangeScene(SceneNames.INFO_SCENE_NAME);
+            SceneTransitionProvider.Instance.ChangeScene(SceneNames.INFO_SCENE_NAME);
             _isSceneLoading = true;
         }
     }

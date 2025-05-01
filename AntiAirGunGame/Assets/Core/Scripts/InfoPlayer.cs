@@ -9,7 +9,7 @@ namespace Core.Scripts
             if (OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch) && 
                 OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
             {
-                GameManager.Instance.ChangeScene(SceneNames.MAIN_MENU_SCENE_NAME);
+                SceneTransitionProvider.Instance.ChangeScene(SceneNames.MAIN_MENU_SCENE_NAME);
             }
         }
     }
